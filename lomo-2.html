@@ -138,11 +138,11 @@ function isEmail(email) {
                   $('#signupForm').prepend('<div class="alert alert-success" style="color:#d9334c;" >\
                 <strong>Success!</strong> Registration done successfully!.\
               </div>');
-              $("#loginForm").removeAttr('disabled');
+              $("#registerForm").removeAttr('disabled');
                 },
                 error:function(error){
                   alert(JSON.stringify(error));
-                  $("#loginForm").removeAttr('disabled');
+                  $("#registerForm").removeAttr('disabled');
                 }   
               })
             }
