@@ -128,6 +128,7 @@ function isEmail(email) {
       
 
             if(flag) {
+              $(this).attr('disabled','disabled');
               $.ajax({
                 url:'https://api-lovemoving.herokuapp.com/register',
                 data:$('#signupForm').serialize(),
@@ -136,10 +137,12 @@ function isEmail(email) {
                   console.log("res",res);
                   $('#signupForm').prepend('<div class="alert alert-success" style="color:#d9334c;" >\
                 <strong>Success!</strong> Registration done successfully!.\
-              </div>')
+              </div>');
+              $("#loginForm").removeAttr('disabled');
                 },
                 error:function(error){
                   alert(JSON.stringify(error));
+                  $("#loginForm").removeAttr('disabled');
                 }   
               })
             }

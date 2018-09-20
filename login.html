@@ -122,6 +122,7 @@ function isEmail(email) {
         
 
             if(flag) {
+              $(this).attr('disabled','disabled');
               $.ajax({
                 url:'https://api-lovemoving.herokuapp.com/login',
                 data:$('#signinForm').serialize(),
@@ -140,6 +141,7 @@ function isEmail(email) {
                         $('#signinForm').prepend('<div class="alert alert-success" style="color:#d9334c;" >\
                          <strong>Warning!</strong> Invalid login details!.\
                           </div>');
+                          $("#loginForm").removeAttr('disabled');
                     }
                 },
                 error:function(error){
