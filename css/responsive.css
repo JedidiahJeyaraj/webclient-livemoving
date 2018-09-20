@@ -1,0 +1,181 @@
+/* Big tablet to 1200px (widths smaller taht the 1140px row) */
+@media only screen and (max-width: 1100px) {
+	
+	.wrapper, .bigwrap {width:96%; float:none;}
+	.topbar {text-align:center; margin:0;}
+	.header {height:560px; padding:20px 0 0;}
+	.banner-form {width:38%;}
+	.banformwrap {width:38%; bottom:80px;}
+	.ftr-col-two .ui-selectmenu-button.ui-button {width:auto;}
+	.bigwrap .bigwrap {width:100%;} 
+	.criteria-box {margin:0 30px 20px 0;} 
+}	
+	
+	
+/* Small tablet to big tablet: from 768px to 1023px */
+@media only screen and (max-width: 1023px) {
+	
+	.wrapper, .bigwrap {width:96%; float:none;}
+	.topbar {text-align:center; margin:0;}
+	.header {height:380px; padding:20px 0 0;}
+	.logowrap {margin:5px 0 0;}
+	.banner {width:50%;}
+	.banner-form {width:35%;}
+	.banformwrap {width:48%; bottom:40px;}
+	.banformwrap h5 {margin:0 0 20px;}
+	.work-wrap {margin:40px 0 0px;}
+	.estimation-box {bottom:40px;}
+	.per-workbox .hover-box {width:100px; height:130px;}
+	.per-workbox h5 {font-size:12px;}
+	.work-area {padding:50px 0;}
+	.per-tickbox {width:25%;}
+	.per-tickbox:nth-child(5n){border-right:2px solid #e0e2e5;}
+	.per-tickbox:nth-child(4n){border-right:0;}
+	.partner-box {width:50%;}
+	.ftr-col-two .ui-selectmenu-button.ui-button {width:auto;}
+	.left-formwrap {width:100%; float:none;}
+	.right-side {width:100%; float:none;}
+	.left-formwrap input[type="text"], .left-formwrap input[type="password"] {width:48%;} 
+	.text-right {width:100%; float:none; text-align:center;}
+	.bottom-img img {left:0; margin:0 auto;}
+	.bigwrap .bigwrap {width:100%;} 
+	.two-side {width:100%; float:none;}
+	.two-side:nth-child(2n) {float:none;}
+	.owl-carousel .owl-item {text-align:center;}
+	.owl-carousel {text-align:center;}
+	.hd h2 {text-align:center;}
+	.owl-theme .owl-nav.disabled + .owl-dots {text-align:center;}
+	.owl-theme .owl-nav {display:inline-block;}
+	.two-side .video {float:none;}
+	.text-lft, .text-lft p {text-align:center;}
+	.smbtmargin {margin: 0 auto;}
+	.trainingimg {margin:0 0 20px; text-align:center;}
+	.whybannerwrap img {height:300px;}
+	.table-sc-wrap {overflow-x:auto;}
+	.searchform {width:auto; position:relative; margin:0 auto; padding:20px 15px;}
+	.selectbox, .smbox, .selectbox-sm {width:100%; float:none; margin:0 auto 16px;}
+	.topsp {margin:45px 0 0; text-align:center;}
+	.criteria-wrap {padding:0px 5px;}
+	.criteria-box {margin:30px 2%; width:46%;}
+	.criteria-box:last-child {margin:30px auto;}
+}
+
+
+/* Small phones to small tablets: from 481px to 767px */
+@media only screen and (max-width: 767px) {
+	
+	.wrapper, .bigwrap {width:96%; float:none;}
+	.topbar {text-align:center; margin:0;}
+    .logowrap, .menuwrap, .topbar-rgt, .banner, .banner-form, .partner-box, .lftside, .ftr-col-one, .ftr-col-two {width:100%; float:none; text-align:center; margin:0 0 15px;}
+	.header {height:auto; padding:20px 0 0;}
+	.topbar-rgt {display:inline-block; width:auto;}
+	.banformwrap {position:relative; width:100%; bottom:0; padding:40px 40px;}
+	.per-secion {width:46%; margin:0 2% 30px;}
+	.icon-secion {margin:0 0 30px;}
+    .estimation-area {height:500px;}
+	.estimation-box {bottom:40px;}
+	.per-workbox .hover-box {width:160px; height:100px;}
+	.per-workbox {width:25%; margin:30px 0 0;}
+	.per-workbox:nth-child(4n) {border-right:0;}
+	.per-tickbox {width:50%;}
+	.per-tickbox:nth-child(5n) {border-right:auto;}
+	.per-tickbox:nth-child(1n) {border-right:2px solid #e0e2e5;}
+	.per-tickbox:nth-child(2n) {border-right:0;}
+	.search-wrap {margin:0 auto;}
+	.footer-upper {padding:50px 0 30px;}
+	.whitebar {text-align:center; padding:25px 0 0;}
+	.left-formwrap {width:100%; float:none;}
+	.left-formwrap input[type="text"], .left-formwrap input[type="password"] {width:100%; float:none;}
+	.left-formwrap input[type="text"]:nth-child(2n), .left-formwrap input[type="password"]:nth-child(2n) {float:none;}
+	.right-side {width:100%; float:none; min-height:0; padding:50px 0 0;}
+	.text-right {width:100%; float:none; text-align:center;}
+	.bottom-img {min-height:210px;}
+	.text-lft, .text-lft p {text-align:center;}
+	.quote-box p {margin:0 0 32px;}
+	.smbtmargin {margin: 0 auto;}
+	.trainingimg {margin:0 0 20px; text-align:center;}
+	.text-lft, .text-lft p {text-align:center;}
+	.trainingimg {margin:0 0 20px; text-align:center;}
+	.whybannerwrap img {height:220px;}
+	.whycontwrap, .shadow .lft-side, .shadow .lft-side-two, .shadow .rgt-side, .shadow .rgt-side-two {width:100%; float:none; text-align:center; margin:0 0;}
+	.shadow .lft-side p, .shadow .lft-side-two p, .shadow .rgt-side p, .shadow .rgt-side-two p {text-align:center;}
+	.shadow .lft-side-two.marg, .shadow .lft-side-two.marg {margin:80px 0;}
+	.table-sc-wrap {overflow-x:auto;}
+	.searchform {width:auto; position:relative; margin:0 auto; padding:20px 15px;}
+	.selectbox, .smbox, .selectbox-sm {width:100%; float:none; margin:0 auto 16px;}
+	.topsp {margin:45px 0 0; text-align:center;}
+	.criteria-wrap {padding:0px 5px;}
+	.criteria-box {margin:30px 2%; width:46%;}
+	.criteria-box:last-child {margin:30px auto;}
+}
+
+
+
+/* Small phones: from 0 to 480px */
+@media only screen and (max-width: 480px) {
+	
+	.wrapper, .bigwrap {width:96%; float:none;}
+	.topbar {text-align:center; margin:0;}
+    .logowrap, .menuwrap, .topbar-rgt, .banner, .banner-form, .banformwrap input[type="text"], .banformwrap input[type="password"], .partner-box, .lftside, .ftr-col-one, .ftr-col-two {width:100%; float:none; text-align:center; margin:0 0 15px;}
+	.banformwrap input[type="text"], .banformwrap input[type="password"] {margin:0 0 10px;}
+	.header {height:auto; padding:20px 0 0;}
+	.topbar-rgt {display:inline-block; width:auto;}
+	.banformwrap {position:relative; width:100%; bottom:0; padding:20px 10px;}
+	.per-secion  {width:46%; margin:0 2% 30px;}
+	.wrapper h2, .bigwrap h2 {font-size:24px; line-height:30px;}
+	.wrapper h3, .bigwrap h3 {font-size:24px;}
+	.estimation-area {min-height:500px;}
+	.estimation-box {width:96%; padding:20px 10px 50px;}
+	.r-tabs .r-tabs-tab {width:49.2%;}
+	.per-workbox .hover-box {width:158px; height:100px;}
+	.per-workbox h5 {font-size:12px;}
+	.work-area {padding:50px 0;}
+	.per-workbox, .per-tickbox {width:50%; margin:25px 0 0;}
+	.per-tickbox:nth-child(5n) {border-right:auto;}
+	.per-tickbox:nth-child(1n) {border-right:2px solid #e0e2e5;}
+	.per-workbox:nth-child(2n), .per-tickbox:nth-child(2n) {border-right:0;}
+	.per-tickbox {min-height:120px;}
+    .partner-wrap {margin:0 0;}
+	.per-tickbox h6 {margin:14px 5px 0;}
+	.footer-upper {padding:52px 0 0;}
+	.search-wrap {width:100%;}
+	.search-wrap input[type="text"] {width:80%;}
+	.social-links {margin:20px 0 0;}
+	.ftr-col-one, .ftr-col-two {margin:0 0 20px;}
+	.footer h2 {margin:0 0 10px;}
+	.footer .ui-selectmenu-button {text-align:center;}
+	.whitebar {text-align:center; padding:25px 0 0;}
+	.left-formwrap {width:100%; float:none;}
+	.left-formwrap input[type="text"], .left-formwrap input[type="password"] {width:100%; float:none;}
+	.left-formwrap input[type="text"]:nth-child(2n), .left-formwrap input[type="password"]:nth-child(2n) {float:none;}
+	.right-side {width:100%; float:none; min-height:0; padding:50px 0 0;}
+	.text-right {width:100%; float:none; text-align:center;}
+	.bottom-img {min-height:120px;}
+	.shadow .resp-tabs-list li {width:150px;}
+	.shadow p.text-center {margin:0 1% 55px;}
+	.shadow-wrap .per-secion h4 {margin:0px 0 20px;}
+	.shadow-wrap .per-secion {width:46%; margin:0 2% 35px;}
+	.btm-part p {font-size:16px;}
+	.two-side {width:100%; float:none;}
+	.two-side:nth-child(2n) {float:none;}
+	.owl-carousel .owl-item {text-align:center;}
+	.owl-carousel {text-align:center;}
+	.hd h2 {text-align:center;}
+	.owl-theme .owl-nav.disabled + .owl-dots {text-align:center;}
+	.owl-theme .owl-nav {display:inline-block;}
+	.text-lft, .text-lft p {text-align:center;}
+	.quote-box p {margin:0 0 32px;}
+	.smbtmargin {margin: 0 auto;}
+	.trainingimg {margin:0 0 20px; text-align:center;}
+	.whybannerwrap img {height:140px;}
+	.whycontwrap, .shadow .lft-side, .shadow .lft-side-two, .shadow .rgt-side, .shadow .rgt-side-two {width:100%; float:none; text-align:center; margin:0 0;}
+	.shadow .lft-side p, .shadow .lft-side-two p, .shadow .rgt-side p, .shadow .rgt-side-two p {text-align:center;}
+	.shadow .lft-side-two.marg, .shadow .lft-side-two.marg {margin:80px 0;}
+	.table-sc-wrap {overflow-x:auto;}
+	.searchform {width:auto; position:relative; margin:0 auto; padding:20px 15px;}
+	.selectbox, .smbox, .selectbox-sm {width:100%; float:none; margin:0 auto 16px;}
+	.topsp {margin:45px 0 0; text-align:center;}
+	.criteria-wrap {padding:0px 5px;}
+	.criteria-box {margin:30px auto 60px; float:none; width:220px;}
+	.criteria-box:last-child {margin:30px auto;}
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Owl Stylesheets -->
+<link rel="stylesheet" htype="text/css" href="css/owl.carousel.min.css">
+<link rel="stylesheet" htype="text/css" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" htype="text/css" href="css/animate.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<title>Love moving </title>
+</head>
+<body>
+
+
+<div class="whitebar">
+  <div class="bigwrap">
+  	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
+         <div class="menuwrap">
+            <label for="show-menu" class="show-menu">Show Menu</label>
+			<input type="checkbox" id="show-menu" role="button">
+         	<ul id="menu">
+                <li>
+                    <a href="#"><i class="fa fa-caret-down"></i> Find Services </a>
+                    <ul class="hidden">
+                        <li><a href="aboutus.html">Who We Are</a></li>
+                        <li><a href="whatwedo.html">What We Do</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-caret-down"></i> Provide Solutions </a>
+                    <!--<ul class="hidden">
+                        <li><a href="#">Who We Are</a></li>
+                        <li><a href="#">What We Do</a></li>
+                    </ul>-->
+                </li>
+            </ul>
+         </div>
+         <div class="topbar-rgt"><span>Ready to move ? </span><div class="red-btn nomargin"><a href="#">YES READY!! </a></div></div>
+         <br class="clear" />
+   </div>
+</div>
+
+
+<div class="mid-area">
+    <div class="bigwrap">
+        <div class="hd"><h2>WHO WE <span>ARE</span></h2></div>
+        <div class="bigwrap">
+             <div class="two-side">
+                 <p>LoveMoving is first and foremost an educational platform. Our uniqueness comes from using our innovative service platform to create a synergetic environment where our partners develop greater quality services by developing themselves. <br /><br />
+
+Our 360 (degree) experiential practical learning methodology, allow us to effectively bridge the gap between what they know to what they DO with what they know. Our methodology replaces compliance for commitment through our get paid to grow system. <br /><br />
+
+We are tired about the lack of professionalism and customer service in the removalist industry, so we have decided to put an end to this. <br /><br />  
+
+LoveMoving select and train partners so they are unquestionably the best one in the industry. Our training is not only focused on handling your belongings with care and efficiency but specially in caring about you and what is important for you. </p> 
+             </div>
+             <div class="two-side">
+                <div class="video"><img src="images/video.jpg" al="video" /></div>
+             </div>
+             <br class="clear" />
+        </div>
+    </div>
+</div>
+
+
+<div class="bigwrap">
+  <div class="inrpage-footer">
+     <p><center>2018 &copy; Lovemoving.com — All rights reserved. </center></p>
+  </div>
+</div>
+
+
+<!-- JavaScript
+================================================== -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Tab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true,   // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#tabInfo');
+                var $name = $('span', $info);
+				$name.text($tab.text());
+				$info.show();
+            }
+        });
+    });
+</script>
+
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script>
+           $(document).ready(function () {
+              $('.fadeOut').owlCarousel({
+                items: 1,
+                animateOut: 'fadeOut',
+                loop: true,
+                margin: 10,
+              });
+            });
+</script>
+
+<script>
+  $(document).ready(function () {
+	 $( "#datepicker" ).datepicker({ dateFormat: 'DD, MM d' });
+	 $( "#datepicker-2" ).datepicker({ dateFormat: 'DD, MM d' });
+  });
+</script>
+
+</body>
+</html>

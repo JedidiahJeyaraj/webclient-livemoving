@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Owl Stylesheets -->
+<link rel="stylesheet" htype="text/css" href="css/owl.carousel.min.css">
+<link rel="stylesheet" htype="text/css" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" htype="text/css" href="css/animate.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<title>Love moving </title>
+</head>
+<body>
+
+
+<div class="whitebar">
+  <div class="bigwrap">
+  	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
+         <div class="topbar-rgt"><span>Already a member ?</span><div class="red-btn nomargin"><a href="/shikhar/lovemoving-html/login.html">Log in here </a></div></div>
+         <br class="clear" />
+   </div>
+</div>
+
+
+<div class="mid-area">
+    <div class="bigwrap">
+      	<div class="left-formwrap">
+                <h5>Sign Up </h5>
+                <form name="form1" method="post" action="#" id="signupForm">
+                  <input type="text" name="fname" value="" placeholder="First Name" />
+                  <input type="text" name="lname" value="" placeholder="Last Name" />
+                  <div class="formboxfull">
+                  	<input type="text" name="email" value="" placeholder="Email Address" />
+                  </div>
+                  <div class="formboxfull">
+                  	<input type="text" name="phone" value="" placeholder="Phone Number" />
+                  </div>
+                  <input type="password" name="password" value="" placeholder="Password" />
+                  <input type="password" name="password-again" value="" placeholder="Password Again ?" />
+                  <div class="formboxfull">
+                  	<input type="text" name="fname2" value="" placeholder="First Name" />
+                  </div>
+                  <div class="checkboxwrap">
+                  	<input type="checkbox" id="ck" /><label for="ck">Yes, Subscribe. </label>
+                  </div>
+                  <input type="submit" name="submit" id="registerForm" value="LET'S START" />
+                </form>
+      	</div>
+      	<div class="right-side">
+            <div class="text-right">
+            	<h2>Become <strong>part of the most loved</strong> relocation service </h2>
+            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque at lectus nec pharetra. 
+            	Nulla lobortis lorem massa, ut placerat purus porttitor nec. Nam id leo volutpat, gravida elit et, molestie dui. 
+            	Suspendisse semper commodo dui, vel accumsan. Curabitur pellentesque at lectus nec pharetra. </p>
+            </div>
+            <br class="clear" />
+            <div class="bottom-img"><img src="images/box.jpg" alt="banner"></div>
+         </div>
+      	 <br class="clear" />
+    </div>
+</div>
+
+
+<div class="bigwrap">
+  <div class="inrpage-footer">
+     <p><center>2018 &copy; Lovemoving.com — All rights reserved. </center></p>
+  </div>
+</div>
+
+
+<!-- JavaScript
+================================================== -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  console.log("test", regex.test(email));
+  return regex.test(email);
+}
+    $(document).ready(function () {
+        $('#Tab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true,   // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#tabInfo');
+                var $name = $('span', $info);
+				$name.text($tab.text());
+				$info.show();
+            }
+        });
+
+        $('#registerForm').click(function(e){
+            e.preventDefault();
+            var formInputs = $('#signupForm').serializeArray()
+              , flag = true;
+
+            for(var i in formInputs){
+              if(formInputs[i].name == 'fname2') continue;
+
+              if($("input[name='"+formInputs[i].name+"']").val() == ''){
+                $("input[name='"+formInputs[i].name+"']").css('border-color','red');
+                flag = false;   
+              }
+              else if(formInputs[i].name == 'email' && !isEmail($("input[name='"+formInputs[i].name+"']").val())){
+                $("input[name='"+formInputs[i].name+"']").css('border-color','red');   
+                flag = false;   
+              }
+              else {
+                $("input[name='"+formInputs[i].name+"']").css('border-color','');   
+              }  
+            }
+            
+            if($("input[name='password-again']").val() != $("input[name='password']").val()){
+              $("input[name='password']").css('border-color','red');   
+              $("input[name='password-again']").css('border-color','red');
+              flag = false;   
+            }
+      
+
+            if(flag) {
+              $.ajax({
+                url:'https://api-lovemoving.herokuapp.com/register',
+                data:$('#signupForm').serialize(),
+                type:'POST',
+                success:function(res){
+                  console.log("res",res);
+                  $('#signupForm').prepend('<div class="alert alert-success" style="color:#d9334c;" >\
+                <strong>Success!</strong> Registration done successfully!.\
+              </div>')
+                },
+                error:function(error){
+                  alert(JSON.stringify(error));
+                }   
+              })
+            }
+            else {
+
+            }
+        });
+    });
+</script>
+
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(document).ready(function () {
+	 $( "#datepicker" ).datepicker({ dateFormat: 'DD, MM d' });
+	 $( "#datepicker-2" ).datepicker({ dateFormat: 'DD, MM d' });
+  });
+</script>
+
+
+<script src="js/owl.carousel.js"></script>
+<script>
+            $(document).ready(function () {
+              $('.fadeOut').owlCarousel({
+                items: 1,
+                animateOut: 'fadeOut',
+                loop: true,
+                margin: 10,
+              });
+            });
+</script>
+</body>
+</html>
