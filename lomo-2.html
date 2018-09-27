@@ -138,6 +138,7 @@ function isEmail(email) {
                   $('#signupForm').prepend('<div class="alert alert-success" style="color:#d9334c;" >\
                 <strong>Success!</strong> Registration done successfully!.\
               </div>');
+              $('.alert-success').fadeIn(3000).fadeOut(3000);
               $("#registerForm").removeAttr('disabled');
                 },
                 error:function(error){
