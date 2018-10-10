@@ -29,7 +29,7 @@
 
 
 <div class="container">
-             
+    <h3>Users</h3>         
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -42,9 +42,9 @@
         </tr>
       </thead>
       <tbody id="user_data">
-        
       </tbody>
     </table>
+    <img id="preloader" style="margin-left: 393px;" src="images/preloader.gif" alt="logo">
   </div>
 
 <div class="bigwrap">
@@ -115,17 +115,18 @@
                             if(res['result'] != undefined && res['result'].length>0){
                                 var users = res['result'];
                                 console.log("users", users);
-                                    for(var user in users){
-                                        console.log(users[user].firstname);
-                                        $('#user_data').append('<tr>\
-                                        <td>' + users[user].firstname + '</td>\
-                                        <td>' + users[user].lastname + '</td>\
-                                        <td>' + users[user].email + '</td>\
-                                        <td>' + users[user].phone + '</td>\
-                                        <td>' + (users[user].is_customer_login == 1?"User":"Customer") + '</td>\
-                                        <td>' + users[user].created_at.split('T')[0] + '</td>\
-                                        </tr>');
-                                    }
+                                $('#preloader').hide();    
+                                for(var user in users){
+                                    console.log(users[user].firstname);
+                                    $('#user_data').append('<tr>\
+                                    <td>' + users[user].firstname + '</td>\
+                                    <td>' + users[user].lastname + '</td>\
+                                    <td>' + users[user].email + '</td>\
+                                    <td>' + users[user].phone + '</td>\
+                                    <td>' + (users[user].is_customer_login == 1?"User":"Customer") + '</td>\
+                                    <td>' + users[user].created_at.split('T')[0] + '</td>\
+                                    </tr>');
+                                }
                             }    
                         },
                         error:function(error){
