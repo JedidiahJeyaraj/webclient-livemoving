@@ -100,13 +100,13 @@
                 margin: 10,
               });
 
-                // if(localStorage.getItem('is_customer_login') != 1){
-                //     window.location = '/dash-board.html';
-                // }
-                // else if(localStorage.getItem('email') == null){
-                //     window.location = '/login.html';
-                // }
-                // else { 
+                if(localStorage.getItem('is_customer_login') != 1){
+                    window.location = '/dash-board.html';
+                }
+                else if(localStorage.getItem('email') == null){
+                    window.location = '/login.html';
+                }
+                else { 
                     $.ajax({
                         url:'https://api-lovemoving.herokuapp.com/users-list',
                         type:'GET',
@@ -133,7 +133,7 @@
                         alert(JSON.stringify(error));
                         }   
                     })
-                //}
+                }
             });
 </script>
 </body>
