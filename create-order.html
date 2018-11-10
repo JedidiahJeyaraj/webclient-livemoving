@@ -244,7 +244,7 @@ function isEmail(email) {
                 console.log("postData", postData);
               $(this).attr('disabled','disabled');
               $.ajax({
-                url:'http://localhost:8080/create-order?userId=' + localStorage.getItem('userId'),
+                url:API_URL + '/create-order?userId=' + localStorage.getItem('userId'),
                 data:postData,
                 type:'POST',
                 success:function(res){
