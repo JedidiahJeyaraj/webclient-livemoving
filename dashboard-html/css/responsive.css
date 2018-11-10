@@ -1,0 +1,430 @@
+/* Big tablet to 1200px (widths smaller taht the 1140px row) */
+@media only screen and (max-width: 1103px) {
+	
+	.wrap {width:96%; float:none;}
+	.left-box {width:600px;}
+	.perbox {padding:0 18px 15px;}
+	.perbox:first-child {padding:0 18px 15px 0;}
+	
+	/******* 3CD-1 page **********/
+	.gbox-one {margin:0 60px 0 0;}
+	.gbox-two {margin:0 60px 0 0;}
+	.feedback-area {width:62%;}
+	
+	/******* 2CD page ************/
+	.profile-left-box {width:66%; padding:25px 20px;} 
+	.profile-rgt-box {width:32%; padding:25px 20px;}
+	.profile-desc-wrap {width:50%; padding:0;} 
+	
+	/******* 5CD page ***********/
+	.financial-left-box {width:62%; padding:25px 0;} 
+	.financial-table-wrap.padding, .financial-graph.padding {padding:0 25px;}
+	.tbl-one {width:200px;}
+	.form-box input[type="text"]{width:155px;} 
+	.form-box input[type="password"]{width:100px;} 
+	.form-wrap:last-child .form-box:last-child {float:left;} 
+	
+    /******* 5SPD page **********/
+	.dateline {width:100%; padding:0 5px;}
+	.dline ul li {font-size:12px; padding:0 9px;}
+	.checkmark {width:28px;} 
+	.dline .checkmark {width:28px;} 
+	.radiowrap input:checked ~ .checkmark strong {width:28px;} 
+	.timelinewrap ul li {width:38.2px;} 
+	.timelinewrap ul li:last-child {width:39px;} 
+	.timelinewrap .timecheckmark {width:38.2px;} 
+	.timelinewrap ul li:last-child .timecheckmark {width:39px;} 
+	.timelinehour ul li {width:38.2px; font-size:11px;} 
+	
+	/******* 2SPD page **********/
+	.reviews-lft {width:60%;}
+	.reviews-rgt {width:35%;}
+
+	/******* 4SPD page **********/
+	.traning-lft {width:468px;}
+	.traning-rgt {width:500px;}
+	.topbtmsp {margin-top:0px; margin-bottom:20px;}
+	.halflftpadding {padding-left:30px;}
+	.traning-lft-desc h6 {margin:0 0 20px;}
+	.traning-lft-desc p {margin:0 0 25px;}
+}	
+
+/* Small tablet to big tablet: from 980px to 1024px */
+@media only screen and (max-width: 1024px) {
+	
+	.left-box {width:550px;}
+	.perbox {padding:0 15px 15px;}
+	.perbox:first-child {padding:0 15px 15px 0;}
+	.txtbox {width:86%;}
+	.txtbox p {font-size:15px;}
+	.table-sc-wrap {overflow-x:auto;}
+	
+	/******* 3CD-1 page **********/
+	.gbox-one {margin:0 40px 0 0;}
+	.gbox-two {margin:0 40px 0 0;}
+	.feedback-area {width:62%;}
+	
+	/******* 2CD page ***********/
+	.profile-left-box {width:66%; padding:25px 20px;} 
+	.profile-rgt-box {width:32%; padding:25px 20px;}
+	.profile-pic-wrap {margin:0 0;}
+	.profile-desc-wrap {width:50%; padding:0;} 
+	
+	/******* 5CD page ***********/
+	.financial-left-box {width:570px; padding:25px 0;} 
+	.financial-table-wrap.padding, .financial-graph.padding {padding:0 25px;}
+	.tbl-one {width:200px;}
+	.form-box input[type="text"]{width:155px;} 
+	.form-box input[type="password"]{width:100px;} 
+	.form-wrap:last-child .form-box:last-child {float:left;} 
+	
+	/******* 6CD page ***********/
+	.halfpadding {padding-left:30px; padding-right:30px;} 
+	.setting-box {width:400px;} 
+	.setting-formbox {width:190px;} 
+	.fullwidth {width:100%; float:none;}
+	
+    /******* 5SPD page **********/
+	.dateline {width:100%; padding:0 5px;}
+	.dline ul li {font-size:12px; padding:0 9px;}
+	.checkmark {width:28px;} 
+	.dline .checkmark {width:34px;} 
+	.radiowrap input:checked ~ .checkmark strong {width:34px;} 
+	.timelinewrap ul li {width:36.4px;} 
+	.timelinewrap ul li:last-child {width:36.5px;} 
+	.timelinewrap .timecheckmark {width:36.4px;} 
+	.timelinehour ul li {width:36.4px; font-size:11px;} 
+	
+	/******* 1SPD page **********/ 
+	.graph-right {width:67%;} 
+	.graph-left {width:150px;} 
+	.graph-left .perbox h3 {font-size:18px; line-height:18px;} 
+	
+	/******* 2SPD page **********/
+	.reviews-lft {width:60%;}
+	.reviews-rgt {width:35%;}
+
+	/******* 4SPD page **********/
+	.traning-lft {width:430px;}
+	.traning-rgt {width:490px;}
+	.topbtmsp {margin-top:0px; margin-bottom:20px;}
+	.halflftpadding {padding-left:30px;}
+	.traning-lft-desc h6 {margin:0 0 20px;}
+	.traning-lft-desc p {margin:0 0 25px;}
+	
+	/******* Chat page **********/
+	.chat-left {width:25%;}
+	.chat-mid {width:50%;}
+	.chat-right {width:25%;}
+	.msgbox input[type="text"] {width:64%;}
+	.talk-bubble {width:70%;}
+	.chat-right ul {margin:5px 15px;}
+}	
+	
+	
+/* Small tablet to big tablet: from 768px to 979pxpx */
+@media only screen and (max-width: 979px) {
+	
+	.left-box {width:100%; float:none; margin:0 0 20px;}
+	.right-box {width:100%; float:none;}
+	.table-sc-wrap {overflow-x:auto;}
+	
+	/******* 3CD-1 page **********/
+	.gbox-one, .gbox-two {width:47%; margin:0 3% 20px 0;}
+	.gbox-three {width:44%; margin:0 20px 20px 0; clear:both;}
+	.gbox-four {width:45%; margin:0 20px 20px 0;}
+	.feedback-area {width:50%;}
+	
+	/******* 2CD page ***********/
+	.profile-left-box {width:100%; float:none; padding:25px 25px;} 
+	.profile-rgt-box {width:100%; padding:25px 25px;}
+	.profile-pic-wrap {margin:0 0 0 10px;}
+	.profile-desc-wrap {width:55%; padding:0;} 
+	
+	/******* 5CD page ***********/
+	.financial-left-box {width:100%; float:none; padding:25px 0;} 
+	.financial-table-wrap.padding, .financial-graph.padding {padding:0 25px;}
+	.tbl-one {width:200px;}
+	.financial-rgt-box {width:100%; float:none; border:0;} 
+	.form-box input[type="text"]{width:155px;} 
+	.form-box input[type="password"]{width:100px;} 
+	.form-wrap:last-child .form-box:last-child {float:left;} 
+	
+	/******* 6CD page ***********/
+	.halfpadding {padding-left:20px; padding-right:20px;} 
+	.setting-box {width:310px;} 
+	.setting-formbox {width:150px;} 
+	.fullwidth {width:100%; float:none;}
+	.editdelet a {margin:0 15px 0 0; font-size:12px;}
+	
+    /******* 5SPD page **********/
+	.dateline {width:100%; padding:0 10px;}
+	.dline {height:auto; border-top:0; border-bottom:0;}
+	.dline ul li {padding:0 12px; border-top:1px solid #eeeeee; border-bottom:1px solid #eeeeee;}
+	.radiowrap input:checked ~ .checkmark strong {width:33px;}
+	.timelinewrap {height:auto; border:0;}
+	.timelinewrap ul li {width:60px; height:35px; border:1px solid #bbbbbb;}
+	.timelinewrap ul li:last-child {width:60px; border:1px solid #bbbbbb;}
+	.timelinewrap .timecheckmark {width:59px; height:34px;}
+	.timelinewrap ul li:last-child .timecheckmark {width:59px; height:34px;}
+	.timelinewrap ul li strong {display:table-cell; width:59px; height:34px;}
+	.timelinehour {display:none;}
+	
+	/******* 1SPD page **********/
+	.graph-right {width:70%;} 
+	
+	/******* 2SPD page **********/
+	.reviews-lft {width:100%; float:none;}
+	.reviews-rgt {width:100%; float:none;}
+
+	/******* 4SPD page **********/
+	.traning-lft {width:100%; float:none;}
+	.traning-rgt {width:100%; float:none;}
+	.ongo-mid {width:42%;}
+	
+	/******* Chat page **********/
+	.mob-view {display:block;}
+	.chat-left {display:none;}
+	.chat-mid {width:95%; float:none; padding:80px 0 0; margin:0 auto;}
+	.chat-right {display:none; width:100%; float:none; height:auto;}
+	.msgbox input[type="text"] {padding:0 0 0 15px; width:66%;}
+	.chat-mid .scroll-content-vertical {padding:0 0;}
+	.mob-view-files {display:block;}
+	.chat-mid .scroll-pane {height:400px;}
+	
+}
+
+
+/* Small phones to small tablets: from 481px to 767px */
+@media only screen and (max-width: 767px) {
+	
+	.wrap {width:96%; float:none;}
+	.logowrap {width:100%; float:none; margin:0 0 20px;}
+	.whitehdr {text-align:center;}
+	.topbar {text-align:center; margin:0;}
+	.topbar-rgt {display:inline-block; float:none;}
+	.navwrap {padding:5px 0 0;}
+	.left-box {width:100%; float:none; margin:0 0 20px;}
+	.right-box {width:100%; float:none;}
+	.dname {font-size:22px; text-align:center;}
+	.perbox {width:33%; padding: 0 25px 16px;}
+	.perbox:first-child {width:33%;}
+	.txtbox {width:77%;}
+	.txtbox p {font-size:14px; line-height:20px;}
+	.boxwp {font-size:12px;}
+	.table-sc-wrap {overflow-x:auto;}
+	
+	/******* 3CD-1 page **********/
+	.gbox-one, .gbox-two {width:47%; margin:0 3% 20px 0;}
+	.gbox-three {width:44%; margin:0 20px 20px 0; clear:both;}
+	.gbox-four {width:45%; margin:0 20px 20px 0;}
+	.rating-area {width:100%; float:none; margin:0 0 25px; text-align:center;}
+	.rating-area h6, .feedback-area h6 {text-align:center; margin:0 0 20px;}
+	.feedback-area {width:100%; float:none; margin:0 0;}
+	
+	/******* 2CD page ***********/
+	.profile-wrap {padding:80px 0 0;} 
+	.profile-pic {margin:-80px 0 25px;} 
+	.profile-left-box {width:100%; float:none; padding:25px 15px;} 
+	.profile-rgt-box {width:100%; float:none; padding:25px 15px;} 
+	.profile-pic-wrap {float:none; margin:0 auto;} 
+	.profile-desc-wrap {width:100%; float:none; text-align:center;}
+	.client-name {display:block; float:none;}
+	.onoff {display:block; float:none;}
+	
+	/******* 5CD page ***********/
+	.financial-left-box {width:100%; float:none; padding:25px 0;} 
+	.financial-table-wrap.padding, .financial-graph.padding {padding:0 25px;}
+	.tbl-one {width:200px;}
+	.financial-rgt-box {width:100%; float:none; border:0;} 
+	.form-box input[type="text"]{width:155px;} 
+	.form-box input[type="password"]{width:100px;} 
+	.form-wrap:last-child .form-box:last-child {float:left;} 
+	
+	/******* 6CD page ***********/
+	.setting-box {width:100%; float:none;}
+	.halfpadding {padding-left:20px; padding-right:20px;}
+	.setting-formbox:last-child {width:100%; float:none;}
+	.setting-formbox {width:100%; float:none;}
+	.setting-formbox a {margin:0 0 20px;} 
+	.gray-wrap .card a {margin:0 0;}
+	.cardarea {margin:0 4px 18px 0;}
+	.cardimg {margin:0 22px 12px 0;}
+	
+	
+    /******* 5SPD page **********/
+	.dateline {width:100%; padding:0 10px;}
+	.dline {height:auto; border-top:0; border-bottom:0;}
+	.dline ul li {padding:0 11px; border-top:1px solid #eeeeee; border-bottom:1px solid #eeeeee;}
+	.radiowrap input:checked ~ .checkmark strong {width:33px;}
+	.timelinewrap {height:auto; border:0;}
+	.timelinewrap ul li {width:60px; height:30px; border:1px solid #bbbbbb;}
+	.timelinewrap ul li:last-child {width:60px; border:1px solid #bbbbbb;}
+	.timelinewrap .timecheckmark {width:59px; height:29px;}
+	.timelinewrap ul li:last-child .timecheckmark {width:59px; height:29px;}
+	.timelinewrap ul li strong {display:table-cell; width:59px; height:29px;}
+	.timelinehour {display:none;}
+	.availonoff {margin:20px 0 10px; float:none;}
+	
+	/******* 1SPD page **********/
+	.graph-left .perbox {width:50%; float:left; text-align:center; border-bottom:1px solid #dddddd;}
+	.graph-left .perbox:first-child {width:50%; float:left; background-image:none; border-right: 1px solid #dddddd;}
+	.graph-left .perbox:last-child {padding:0 0 18px; margin:0 0 22px 0;}
+	.graph-left {width:100%; float:none; background-image:none;}
+	.graph-left .perbox {width:100%; float:none;}
+	.perbox {width:100%; float:none; border-right:0; border-bottom:1px solid #dddddd; background-image:none; text-align:center; margin-bottom:20px;}
+	.perbox:first-child {width:100%; float:none; padding:0 25px 16px; border-bottom:1px solid #dddddd;}
+	.perbox:last-child {width:100%; float:none; padding:0 25px 16px; border-bottom:0; padding:0 25px;}
+	.graph-right {width:100%; float:none; text-align:center;}
+	.graph-right .graph-desc-lft {display:block; width:100%; float:none; margin:5px 0; overflow:hidden;}
+	.graph-right .graph-desc-lft h6 {display:block; width:100%; margin:0 0 10px; text-align:center;}
+	.graph-right .graph-desc-rgt {display:inline-block; float:none;}
+	
+	/******* 2SPD page **********/
+	.reviews-lft {width:100%; float:none;}
+	.reviews-rgt {width:100%; float:none;}
+
+	/******* 4SPD page **********/
+	.traning-lft {width:100%; float:none;}
+	.traning-rgt {width:100%; float:none;}
+	.halflftpadding {padding-left:20px;}
+	.rgt-dropdown .custom-dropdown {margin:0 0;}
+	.ongo-mid {width:42%;}
+	
+	/******* Chat page **********/
+	.mob-view {display:block;}
+	.chat-left {display:none;}
+	.chat-mid {width:95%; float:none; height:auto; padding:80px 0 90px; margin:0 auto;}
+	.chat-right {display:none; width:100%; float:none; height:auto;}
+	.msgbox {margin:0 5px 10px;}
+	.talk-bubble {width:98%; float:none; margin:0 auto 40px; display:block;}
+	.talk-bubble.right {float:none;}
+	.msgic {height:50px; width:32px;}
+	.msgbox input[type="text"] {padding:0 0 0 15px; width:66%;}
+	.chat-mid .scroll-content-vertical {padding:0 0;}
+	.mob-view-files {display:block;}
+		
+}
+
+
+
+/* Small phones: from 0 to 480px */
+@media only screen and (max-width: 480px) {
+	
+	.wrap {width:96%; float:none;}
+	.logowrap {width:100%; float:none; margin:0 0 20px;}
+	.whitehdr {text-align:center;}
+	.topbar {text-align:center; margin:0;}
+	.tbpadding {padding:20px 0;}
+	.topbar-rgt {display:inline-block; float:none;}
+	.navwrap {padding:5px 0 0;}
+	.left-box {width:100%; float:none; padding:20px 15px; margin:0 0 20px;}
+	.right-box {width:100%; float:none; padding:15px;}
+	.dname {font-size:22px; text-align:center;}
+	.threeboxarea {background:none; margin:0 0 20px 0;}
+	.perbox {width:100%; float:none; background:none; border-bottom:1px solid #dddddd; margin:0 0 20px; text-align:center;}
+	.perbox:first-child {padding:0 0 16px 0;}
+	.txtbox {width:77%;}
+	.txtbox p {font-size:14px; line-height:20px;}
+	.boxwp {font-size:12px;}
+	.table-sc-wrap {overflow-x:auto;}
+	
+	/******* 3CD-1 page **********/
+	.gbox-one, .gbox-two, .gbox-three, .gbox-four {width:100%; float:none; margin:0 0 20px; text-align:center;}
+	.tickarea {width:100%; float:none; margin:0 0 25px; text-align:center;}
+	.rating-area {width:100%; float:none; margin:0 0 25px; text-align:center;}
+	.starwrap {display:inline-block;}
+	.rating-area h6, .feedback-area h6 {text-align:center; margin:0 0 20px;}
+	.feedback-area {width:100%; float:none; margin:0 0;}
+	
+	/******* 2CD page ***********/
+	.profile-wrap {padding:80px 0 0;} 
+	.profile-pic {margin:-80px 0 25px;} 
+	.profile-left-box {width:100%; float:none; padding:25px 15px;} 
+	.profile-rgt-box {width:100%; float:none; padding:25px 15px;} 
+	.profile-pic-wrap {float:none; margin:0 auto;} 
+	.profile-desc-wrap {width:100%; float:none; text-align:center;}
+	.client-name {display:block; float:none;}
+	.onoff {display:block; float:none;}
+	
+	/******* 5CD page ***********/
+	.financial-left-box {width:100%; float:none; padding:25px 0;} 
+	.financial-table-wrap.padding, .financial-graph.padding {padding:0 25px;}
+	.tbl-one {width:200px;}
+	.financial-rgt-box {width:100%; float:none; padding:25px 15px; border:0;} 
+	.form-box input[type="text"]{width:155px;} 
+	.form-box input[type="password"]{width:100px;} 
+	.form-wrap:last-child .form-box:last-child {float:left;} 
+	
+	/******* 6CD page ***********/
+	.setting-box {width:100%; float:none;}
+	.halfpadding {padding-left:20px; padding-right:20px;}
+	.setting-formbox:last-child {width:100%; float:none;}
+	.setting-formbox {width:100%; float:none;}
+	.setting-formbox a {margin:0 0 20px;} 
+	.gray-wrap h2 {display:block; float:none; margin:0 0 15px;}
+	.gray-wrap a {display:block; float:none; margin:0 0 15px;}
+	.editdelet {display:block; width:100%; float:none; margin:5px 0 0;}
+	.editdelet a {display:inline-block; float:left;}
+	.gray-wrap .card a {margin:0 0;}
+	.cardarea {margin:0 4px 18px 0;}
+	.cardimg {margin:0 22px 12px 0;}
+	
+    /******* 5SPD page **********/
+	.announcetxt {margin:0 0;}
+	.announce-area {text-align:center;}
+	.graybox h2 {line-height:24px; text-align:center;}
+	.custom-dropdown {margin:0 35px 0 0;}
+	.dateline {width:100%; padding:0 10px;}
+	.dline {height:auto; border-top:0; border-bottom:0;}
+	.dline ul li {padding:0 9px; border-top:1px solid #eeeeee; border-bottom:1px solid #eeeeee;}
+	.checkmark {width:30px;}
+	.timelinewrap {height:auto; border:0;}
+	.timelinewrap ul li {width:60px; height:30px; border:1px solid #bbbbbb;}
+	.timelinewrap ul li:last-child {width:60px; border:1px solid #bbbbbb;}
+	.timelinewrap .timecheckmark {width:59px; height:29px;}
+	.timelinewrap ul li:last-child .timecheckmark {width:59px; height:29px;}
+	.timelinewrap ul li strong {display:table-cell; width:59px; height:29px;}
+	.timelinehour {display:none;}
+	.availonoff {margin:10px 0;}
+	
+	/******* 1SPD page **********/
+	.tranbox-mid {width:115px; margin:0 5px 0 0; font-size:12px;}
+	.graph-left {width:100%; float:none; background-image:none;}
+	.graph-left .perbox {width:100%; float:none;}
+	.graph-left .perbox:first-child {width:100%; float:none; border-right:0;}
+	.graph-left .perbox:last-child {padding:0 0 18px; margin:0 0 22px 0;}
+	.perbox:first-child {width:100%; float:none; border-right:0;}
+	.graph-right {width:100%; float:none; text-align:center;}
+	.graph-right .graph-desc-lft {display:block; width:100%; float:none; margin:5px 0; overflow:hidden;}
+	.graph-right .graph-desc-lft h6 {display:block; width:100%; margin:0 0 10px; text-align:center;}
+	.graph-right .graph-desc-rgt {display:inline-block; float:none;}
+	
+	/******* 2SPD page **********/
+	.reviews-lft {width:100%; float:none;}
+	.reviews-rgt {width:100%; float:none;}
+	.reviews .reviews-lft h2 {font-size:14px;}
+	.reviews-wrap .pagination-wrap {text-align:center;}
+	.reviews-wrap .pagination-left {width:100%; float:none; margin:0 0 15px;}
+	.reviews-wrap .pagination-rgt {display:inline-block; float:none;}
+
+	/******* 4SPD page **********/
+	.traning-lft {width:100%; float:none;}
+	.traning-rgt {width:100%; float:none;}
+	.halflftpadding {padding-left:20px;}
+	.inblktxt h3 {font-size:15px;}
+	.rgt-dropdown .custom-dropdown {margin:0 0;}
+	
+	/******* Chat page **********/
+	.mob-view {display:block;}
+	.chat-left {display:none;}
+	.chat-mid {width:95%; float:none; height:auto; padding:80px 0 90px; margin:0 auto;}
+	.chat-right {display:none; width:100%; float:none; height:auto;}
+	.msgbox {margin:0 5px 10px;}
+	.talk-bubble {width:98%; float:none; margin:0 auto 40px; display:block;}
+	.talk-bubble.right {float:none;}
+	.msgic {height:50px; width:32px;}
+	.msgbox input[type="text"] {padding:0 0 0 15px; width:66%;}
+	.chat-mid .scroll-content-vertical {padding:0 0;}
+	.mob-view-files {display:block;}
+} 

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<title>Love moving | Dashboard</title>
+
+
+<script>
+window.onload = function () {
+var options = {
+	animationEnabled: true,  
+	title:{
+		text: "Monthly Sales - 2018"
+	},
+	axisX: {
+		valueFormatString: "MMM"
+	},
+	axisY: {
+		title: "Sales (in USD)",
+		prefix: "$",
+		includeZero: false
+	},
+	data: [{
+		yValueFormatString: "$#,###",
+		xValueFormatString: "MMMM",
+		type: "spline",
+		dataPoints: [
+			{ x: new Date(2017, 0), y: 25060 },
+			{ x: new Date(2017, 1), y: 27980 },
+			{ x: new Date(2017, 2), y: 33800 },
+			{ x: new Date(2017, 3), y: 49400 },
+			{ x: new Date(2017, 4), y: 40260 },
+			{ x: new Date(2017, 5), y: 33900 },
+			{ x: new Date(2017, 6), y: 48000 },
+			{ x: new Date(2017, 7), y: 31500 },
+			{ x: new Date(2017, 8), y: 32300 },
+			{ x: new Date(2017, 9), y: 42000 },
+			{ x: new Date(2017, 10), y: 52160 },
+			{ x: new Date(2017, 11), y: 49400 }
+		]
+	}]
+};
+$("#chartContainer").CanvasJSChart(options);
+}
+</script>
+</head>
+<body>
+
+
+<div class="whitehdr">
+  <div class="wrap tbpadding">
+  	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
+         <div class="topbar-rgt">
+         	 <div class="profile-area">
+         		<a href="#"><span>Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
+             </div>
+             <div class="icons">
+             	<a href="0chat.html"><img src="images/icon-chat.png" alt="chat"></a>
+             </div>
+             <div class="icons">
+             	<a href="#"><img src="images/icon-bell.png" alt="bell"></a>
+             </div>
+             <div class="icons">
+             	<a href="#"><img src="images/icon-setting.png" alt="setting"></a>
+             </div>
+         </div>
+   </div>
+</div>
+
+
+
+<div class="navwrap">
+		<div class="wrap">
+            <label for="show-menu" class="show-menu">Show Menu</label>
+			<input type="checkbox" id="show-menu" role="button">
+         	<ul id="menu">
+                <li><a href="1SPD.html">Overview </a></li>
+                <li><a href="2SPD.html">Profile </a></li>
+                <li><a href="3SPD.html" class="active">Financial </a></li>
+                <li><a href="4SPD.html">Training </a></li>
+                <li><a href="5SPD.html">Calendar </a></li>
+                <li><a href="6SPD.html">Settings </a></li>
+            </ul>
+         </div>
+</div>
+
+
+<div class="content-area">
+ 	 <div class="wrap content-wrap">
+       <div class="gybox nobtmmargin">
+      	  <div class="financial-left-box">
+     	     <div class="financial-table-wrap padding">
+         		 <div class="financial-table"> 
+                      <div class="tbl-one"> 
+                         <h6>Current Funds </h6>
+                         <span class="red">$ 28,050.00 </span>
+                      </div>
+                      <div class="tbl-two"> 
+                         <h6>Penalties </h6>
+                         <span>$ 5.00 </span>
+                      </div>
+                      <div class="tbl-three"> 
+                         <h6>Expenses </h6>
+                         <span>$ 105.00 </span>
+                      </div>
+                      <div class="tbl-four"> 
+                         <h6>Pending Withdraw </h6>
+                         <span>$ 10,255.00 </span>
+                      </div>
+                  </div>
+             </div>
+             <div class="financial-graph padding">
+                  <div class="graph-desc">
+                      <div class="graph-desc-lft">
+                          <h6>Payment Flow </h6>
+                          <span class="custom-dropdown">
+                                <select>
+                                    <option>Recieved </option>
+                                    <option>Recieved 1</option>
+                                    <option>Recieved 2</option>  
+                                    <option>Recieved 3</option>
+                                    <option>Recieved 4</option>
+                                    <option>Recieved 5</option>
+                                </select>
+                          </span>
+                      </div>
+                      <div class="graph-desc-rgt">
+                          <span><a href="#">Day </a></span>    
+                          <span><a href="#">Week </a></span>    
+                          <span><a href="#" class="active">Month </a></span>    
+                          <span><a href="#">Year </a></span> 	
+                      </div>
+                  </div>
+                  <div class="graph"><div id="chartContainer" style="height:220px; max-width:690px; margin:0px auto; overflow:hidden;"></div><!--<img src="images/graph.jpg" alt="graph">--></div>	
+              </div>
+          </div>       
+          <div class="financial-rgt-box">
+              <div class="text-hd-rgt">
+                  <h4>+ Add Funds </h4>
+                  <a href="#" class="red">Withdraw Funds </a>
+              </div>
+              <div class="form-area">
+              		<div class="form-wrap">
+                    	<div class="form-box">
+                        	<span>Currency </span>
+                            <span class="custom-dropdown">
+                                <select>
+                                    <option>USD </option>
+                                    <option>USD 1</option>
+                                    <option>USD 2</option>  
+                                    <option>USD 3</option>
+                                    <option>USD 4</option>
+                                    <option>USD 5</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="form-box">
+                        	<span>Amount </span>
+                        	<input type="text" name="amn" value="" placeholder="10,255.00" />
+                        </div>
+                    </div>
+                    <div class="form-wrap">
+                        <div class="form-box">
+                        	<span>Withdraw to </span>
+                            <span class="custom-dropdown">
+                                <select>
+                                    <option>Visa — * 7890 </option>
+                                    <option>Visa — * 7890 </option>
+                                    <option>Visa — * 7890 </option>  
+                                    <option>Visa — * 7890 </option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="form-box">
+                        	<span>Security Code </span>
+                        	<input type="password" name="code" value="" placeholder="• • • • • •" />
+                        </div>
+                    </div>
+                    <div class="form-wrap">
+                        <div class="form-box">
+                        	<input type="submit" name="submit" value="WITHDRAW" />
+                        </div>
+                        <div class="form-box">
+                        	<input type="button" name="refresh" value="" />
+                        </div>
+                   </div>
+              </div>
+              <div class="form-bottom">
+              		<h4>Confirmed !! </h4>
+                    <p><span>10,255.00</span> USD added from <span>Visa *7890</span>. <br />
+Enter the <a href="#">Security Code</a> recieved via SMS above. </p>
+              </div>
+       </div>
+       <br class="clear" />
+     </div>
+   </div>
+</div>
+
+
+<div class="whbox whbg">
+     <div class="wrap content-wrap">
+     	 <div class="table-btm-wrap">
+        	 	 <div class="table-top-area">
+                        <div class="text-hd blkhding">
+                            <h2><strong>Financial History </strong></h2>
+                        </div>
+                        <span class="custom-dropdown">
+                            <select>
+                                <option>2018 </option>
+                                <option>2017</option>  
+                                <option>2016</option>
+                                <option>2015</option>
+                                <option>2014</option>
+                            </select>
+                        </span>
+                        <span class="custom-dropdown">
+                            <select>
+                                <option>Monthly </option>
+                                <option>Jan </option>  
+                                <option>Feb </option>
+                                <option>Mar</option>
+                                <option>April</option>
+                            </select>
+                        </span>
+                        <input type="text" name="keywords" value="" placeholder="Keywords here" />
+                        <div class="table-top-rgt">
+                        	<a href="#" class="red">Recieved Funds </a>
+                            <a href="#">Withdraws </a>
+                        </div>
+                        <br class="clear" />
+                    </div>
+                 <div class="table-wrap three-spd-table">
+                            <table>
+                                <tr>
+                                    <th>Date </th>
+                                    <th>Amount </th>
+                                    <th>Job Description </th>
+                                    <th>From </th>
+                                    <th>Financial ID </th>
+                                    <th>Invoice </th>
+                                </tr>
+                                <tr>
+                                    <td>March 32, 2018 </td>
+                                    <td class="redtxt">12,840.00 </td>
+                                    <td>Transport my stuff somewhere </td>
+                                    <td>John W. Doe </td>
+                                    <td>BT01804412 </td>
+                                    <td><a href="#">export invoice » </a></td>
+                                </tr>
+                                <tr>
+                                    <td>March 32, 2018 </td>
+                                    <td class="redtxt">12,840.00 </td>
+                                    <td>Transport my stuff somewhere </td>
+                                    <td>John W. Doe </td>
+                                    <td>BT01804412 </td>
+                                    <td><a href="#">export invoice » </a></td>
+                                </tr>
+                                <tr>
+                                    <td>March 32, 2018 </td>
+                                    <td class="redtxt">12,840.00 </td>
+                                    <td>Transport my stuff somewhere </td>
+                                    <td>John W. Doe </td>
+                                    <td>BT01804412 </td>
+                                    <td><a href="#">export invoice » </a></td>
+                                </tr>
+                                <tr>
+                                    <td>March 32, 2018 </td>
+                                    <td class="redtxt">12,840.00 </td>
+                                    <td>Transport my stuff somewhere </td>
+                                    <td>John W. Doe </td>
+                                    <td>BT01804412 </td>
+                                    <td><a href="#">export invoice » </a></td>
+                                </tr>
+                                <tr>
+                                    <td>March 32, 2018 </td>
+                                    <td class="redtxt">12,840.00 </td>
+                                    <td>Transport my stuff somewhere </td>
+                                    <td>John W. Doe </td>
+                                    <td>BT01804412 </td>
+                                    <td><a href="#">export invoice » </a></td>
+                                </tr>
+                                <tr>
+                                    <td>March 32, 2018 </td>
+                                    <td class="redtxt">12,840.00 </td>
+                                    <td>Transport my stuff somewhere </td>
+                                    <td>John W. Doe </td>
+                                    <td>BT01804412 </td>
+                                    <td><a href="#">export invoice » </a></td>
+                                </tr>
+                            </table>
+                            <div class="pagination-wrap">
+                                <div class="pagination-left">Page <a href="#">2</a> of <a href="#">24</a></div>
+                                <div class="pagination-rgt">
+                                    <ul>
+                                        <li class="prev"><a href="#">«</a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#" class="active">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li class="next"><a href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+         </div>
+     </div>
+</div>
+
+
+
+<div class="footer-wrap"></div>
+
+
+<!-- JavaScript
+================================================== -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>

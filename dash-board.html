@@ -540,6 +540,7 @@
         }
        console.log(localStorage.getItem('email')); 
        if(localStorage.getItem('email') == null){
+           //window.location = '/shikhar/lovemoving-html/login.html';
            window.location = '/login.html';
        }
        else {
@@ -569,6 +570,7 @@
 
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/custom.js" type="text/javascript"></script>
 <script>
   $(document).ready(function () {
 	 $( "#datepicker" ).datepicker({ dateFormat: 'DD, MM d' });
@@ -586,15 +588,6 @@
                 loop: true,
                 margin: 10,
               });
-                $('#logout').click(function(e){
-                  localStorage.removeItem('firstname');
-                  localStorage.removeItem('lastname');
-                  localStorage.removeItem('email');
-                  localStorage.removeItem('phone');
-                  localStorage.removeItem('is_customer_login');
-                  window.location = '/login.html';
-                });  
-
             });
 </script>
 

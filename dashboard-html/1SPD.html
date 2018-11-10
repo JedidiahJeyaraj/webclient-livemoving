@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<title>Love moving | Dashboard</title>
+
+<script>
+window.onload = function () {
+
+var options = {
+	animationEnabled: true,  
+	title:{
+		text: "Number of Bookings - 2018"
+	},
+	axisX: {
+		valueFormatString: "MMM"
+	},
+	axisY: {
+		title: "Number of Bookings",
+		prefix: "",
+		includeZero: false
+	},
+	data: [{
+		yValueFormatString: "",
+		xValueFormatString: "MMMM",
+		type: "spline",
+		dataPoints: [
+			{ x: new Date(2017, 0), y: 25060 },
+			{ x: new Date(2017, 1), y: 27980 },
+			{ x: new Date(2017, 2), y: 33800 },
+			{ x: new Date(2017, 3), y: 49400 },
+			{ x: new Date(2017, 4), y: 40260 },
+			{ x: new Date(2017, 5), y: 33900 },
+			{ x: new Date(2017, 6), y: 48000 },
+			{ x: new Date(2017, 7), y: 31500 },
+			{ x: new Date(2017, 8), y: 32300 },
+			{ x: new Date(2017, 9), y: 42000 },
+			{ x: new Date(2017, 10), y: 52160 },
+			{ x: new Date(2017, 11), y: 49400 }
+		]
+	}]
+};
+$("#chartContainer").CanvasJSChart(options);
+
+}
+</script>
+</head>
+<body>
+
+
+<div class="whitehdr">
+  <div class="wrap tbpadding">
+  	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
+         <div class="topbar-rgt">
+         	 <div class="profile-area">
+         		<a href="#"><span>Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
+             </div>
+             <div class="icons">
+             	<a href="0chat.html"><img src="images/icon-chat.png" alt="chat"></a>
+             </div>
+             <div class="icons">
+             	<a href="#"><img src="images/icon-bell.png" alt="bell"></a>
+             </div>
+             <div class="icons">
+             	<a href="#"><img src="images/icon-setting.png" alt="setting"></a>
+             </div>
+         </div>
+   </div>
+</div>
+
+
+
+<div class="navwrap">
+		<div class="wrap">
+            <label for="show-menu" class="show-menu">Show Menu</label>
+			<input type="checkbox" id="show-menu" role="button">
+         	<ul id="menu">
+                <li><a href="1SPD.html" class="active">Overview </a></li>
+                <li><a href="2SPD.html">Profile </a></li>
+                <li><a href="3SPD.html">Financial </a></li>
+                <li><a href="4SPD.html">Training </a></li>
+                <li><a href="5SPD.html">Calendar </a></li>
+                <li><a href="6SPD.html">Settings </a></li>
+            </ul>
+         </div>
+</div>
+
+
+
+<div class="content-area">
+    <div class="wrap content-wrap">
+    		<div class="left-box btmmar">
+                <div class="graph-left">
+                	<div class="perbox">
+                    	<h2>Current Funds </h2>
+                        <h3>$ 28,050.00 </h3>
+                        <a href="#">Financial Board » </a>
+                    </div>
+                	<div class="perbox">
+                    	<h2>Total Daily Bookings </h2>
+                        <h3>78 Bookings </h3>
+                        <a href="#">Check Calendar » </a>
+                    </div>
+                </div>
+                <div class="graph-right">
+                      <div class="graph-desc smlmar">
+                          <div class="graph-desc-lft">
+                              <h6>Number of Bookings </h6>
+                          </div>
+                          <div class="graph-desc-rgt">
+                              <span><a href="#" class="active">Daily </a></span>    
+                              <span><a href="#">Weekly </a></span>    
+                              <span><a href="#">Monthly </a></span>    
+                              <span><a href="#">Custom </a></span> 	
+                          </div>
+                      </div>
+                      <div class="graph"><div id="chartContainer" style="height:178px; max-width:100%; margin:0px auto; overflow:hidden;"></div><!--<img src="images/graph2.jpg" alt="graph2">--></div>	
+                </div>
+      		</div>
+            
+            <div class="right-box btmmar">
+                    <div class="text-hd-rgt smlmar-two">
+                    	<h4>Job Summary </h4>
+                        <span class="custom-dropdown">
+                                <select>
+                                    <option>Today </option>
+                                    <option>Tomorrow</option>
+                                    <option>Today</option>
+                                </select>
+                        </span>
+                    </div>
+                    <div class="summarybox">
+                        <div class="summarytxt"><span class="grn">75</span>Accepted</div>
+                        <li class='progressbar-75' data-width='75'></li>
+                    </div>
+                    <div class="summarybox">
+                        <div class="summarytxt"><span class="blu">100</span>Awaiting</div>
+                        <li class='progressbar-100' data-width='100'></li>
+                    </div>
+                    <div class="summarybox">
+                        <div class="summarytxt"><span class="red">125</span>Declined</div>
+                        <li class='progressbar-125' data-width='125'></li>
+                    </div>
+         	</div>
+            
+      	 	<br class="clear" />
+            
+    
+      		<div class="left-box btmmar">
+                <div class="dname">
+                	<small>Welcome back, John Doe </small>
+                    Here's what you've missed
+                </div>
+                <div class="threeboxarea">
+                	<div class="perbox">
+                    	<h2>Jobs Awaiting Confirmation </h2>
+                        <h3>24 Jobs </h3>
+                        <a href="#">Check Calendar » </a>
+                    </div>
+                	<div class="perbox">
+                    	<h2>Ongoing Jobs Today </h2>
+                        <h3>2 Jobs </h3>
+                        <a href="#">Hurry. Get details » </a>
+                    </div>
+                	<div class="perbox">
+                    	<h2>Training Manager </h2>
+                        <h3>3 New Courses </h3>
+                        <a href="#">Get Certified » </a>
+                    </div>
+                </div>
+                <div class="newsfeedarea">
+                	<h2>Newsfeed </h2>
+                    <div class="newsbox">
+                    	<div class="imgbox"><img src="images/pic-1.jpg" alt="pic-1"></div>
+                        <div class="txtbox">
+                        	<p><strong>John Doe</strong> left feedback for <span>Full Relocation</span> on your profile. </p>
+                            <a href="#">Give feedback too » </a>
+                        </div>
+                    </div>
+                    <div class="newsbox">
+                    	<div class="imgbox"></div>
+                        <div class="txtbox">
+                        	<p><strong class="bk">Love</strong><strong>Moving</strong> added <span>3 New Courses </span> for your business. </p>
+                            <p>Have a look at what we have to offer and if it's suitable for your, follow the course and take the test to get certified. Check the last corses <a href="#">here</a>.</p>
+                        </div>
+                    </div>
+                    <div class="newsbox">
+                    	<div class="imgbox"></div>
+                        <div class="txtbox">
+                        	<p><strong>Congratulations !! </strong>You've been chosen to provide services for <span>2 New Jobs</span>. </p>
+                            <a href="#">See details on Calendar » </a>
+                        </div>
+                    </div>
+                </div>
+      		</div>
+            
+            <div class="right-box btmmar">
+                    <div class="text-hd-rgt">
+                        <h4>Ongoing Training </h4>
+                        <a class="red" href="#">See More </a>
+                    </div>
+                    <div class="tranboxwrap">
+                        <div class="tranbox-lft"><span>&nbsp;</span></div>
+                        <div class="tranbox-mid">Training Title </div>
+                        <li class='progressbar-1SPD-training' data-width='75'></li>
+                    </div>
+                    <div class="tranboxwrap">
+                        <div class="tranbox-lft"><span>&nbsp;</span></div>
+                        <div class="tranbox-mid">Another Training Title </div>
+                        <li class='progressbar-1SPD-training' data-width='80'></li>
+                    </div>
+                    <div class="tranboxwrap">
+                        <div class="tranbox-lft"><span>&nbsp;</span></div>
+                        <div class="tranbox-mid">Random Training </div>
+                        <li class='progressbar-1SPD-training' data-width='40'></li>
+                    </div>
+                    <div class="tranboxwrap">
+                        <div class="tranbox-lft"><span>&nbsp;</span></div>
+                        <div class="tranbox-mid">Another One Here </div>
+                        <li class='progressbar-1SPD-training' data-width='60'></li>
+                    </div>
+                    <div class="tranboxwrap">
+                        <div class="tranbox-lft"><span>&nbsp;</span></div>
+                        <div class="tranbox-mid">The Last One </div>
+                        <li class='progressbar-1SPD-training' data-width='25'></li>
+                    </div>
+         	</div>
+      	 	<br class="clear" />
+    </div>
+</div>
+
+
+<div class="footer-wrap"></div>
+
+
+<!-- JavaScript
+================================================== -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="js/progressbar.js"></script>
+    <script>
+	$('.progressbar-75').progressBar({
+		shadow : true,
+		percentage : false,
+		animation : true,
+		barColor : "#238c00",
+		height : "10",
+	});
+	$('.progressbar-125').progressBar({
+		shadow : true,
+		percentage : false,
+		animation : true,
+		barColor : "#da344d",
+		height : "10",
+	});
+	$('.progressbar-100').progressBar({
+		shadow : true,
+		percentage : false,
+		animation : true,
+		barColor : "#4f7cac",
+		height : "10",
+	});
+	$('.progressbar-1SPD-training').progressBar({
+		shadow : true,
+		percentage : false,
+		animation : true,
+		barColor : "#da344d",
+		height : "10",
+	});
+</script>
+
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>

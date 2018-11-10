@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Owl Stylesheets -->
+<link rel="stylesheet" htype="text/css" href="css/owl.carousel.min.css">
+<link rel="stylesheet" htype="text/css" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" htype="text/css" href="css/animate.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<title>Love moving </title>
+</head>
+<body>
+
+
+<div class="whitebar">
+  <div class="bigwrap">
+  	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
+         <div class="topbar-rgt"><span id="username">Already a member ?</span><div id="logout" class="red-btn nomargin"><a href="#">Logout </a></div></div>
+         <br class="clear" />
+   </div>
+</div>
+
+
+<div class="mid-area">
+    <div class="bigwrap">
+            <form name="order-from" id="create-order" method="post" action="#">
+              
+            <div class="row ">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="ServiceType">ServiceType:</label>
+                        <select class="form-control" id="ServiceType" name="serviceType">
+                            <option value="">--Selection Service Type--</option>
+                            <option value="Full Relocation">Full Relocation</option>
+                            <option value="Packing">Packing</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="pwd">From Date:</label>
+                        <input type="text" class="form-control" id="fromdate" placeholder="From date" name="orderFromDate">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="orderToDate">To Date:</label>
+                        <input type="text" class="form-control" id="todate" placeholder="To date" name="orderToDate">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="pwd">When?:</label>
+                        <input type="text" class="form-control" id="dateandtime" placeholder="Access date and time" name="orderDateTime">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row ">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="from-location">From Location:</label>
+                        <select class="form-control" id="fromLocation" name="FromLocation">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="to-location">To Location:</label>
+                        <select class="form-control" id="toLocation" name="ToLocation">
+                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row ">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="AccessTime">AccessTime:</label>
+                        <select class="form-control" id="AccessTime" name="accessTime">
+                            <option value="">--Select access time--</option>
+                            <option value="8am - 1pm">8am - 1pm</option>
+                            <option value="2pm - 6pm">2pm - 6pm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="pwd">Message:</label>
+                        <textarea  class="form-control" id="message" placeholder="Please enter your Message..." name="orderComments" ></textarea>
+                    </div>
+                </div>
+            </div>
+                
+              <button type="submit" id='order-form' class="btn btn-default">Create</button>
+            </form>   
+      	 <br class="clear" />
+    </div>
+</div>
+
+
+<div class="bigwrap">
+  <div class="inrpage-footer">
+     <p><center>2018 &copy; Lovemoving.com — All rights reserved. </center></p>
+  </div>
+</div>
+
+
+<!-- JavaScript
+================================================== -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script src="js/custom.js" type="text/javascript"></script>
+<script src="js/conf.js" type="text/javascript"></script>
+<script type="text/javascript">
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  console.log("test", regex.test(email));
+  return regex.test(email);
+}
+    $(document).ready(function () {
+        $('#Tab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true,   // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#tabInfo');
+                var $name = $('span', $info);
+				$name.text($tab.text());
+				$info.show();
+            }
+        });
+
+        $.ajax({
+            "url": API_URL + "/list-location",
+            "type": "GET",
+            success:function(res){
+                console.log(res);
+                res = res.result;
+                var options = '<option value="">---Select options---</option>';
+                for(var i in res){
+                    options += '<option value='+res[i].lm_lc_id+'>'+res[i].lm_lc_name+'</option>';
+                }
+                $('#fromLocation').append(options);
+                $('#toLocation').append(options);
+            },
+            error:function(err){
+                alert(err);               
+            }    
+        });
+
+        $('#username').text(localStorage.getItem('email'));
+        $('#order-form').click(function(e){
+            e.preventDefault();
+            var formInputs = $('#create-order').serializeArray()
+              , flag = true;
+
+            for(var i in formInputs){
+
+                console.log(formInputs[i].name);
+              if($("input[name='"+formInputs[i].name+"']").val() == ''){
+                $("input[name='"+formInputs[i].name+"']").css('border-color','red');
+                flag = false;   
+              }
+              else {
+                $("input[name='"+formInputs[i].name+"']").css('border-color','');   
+              }  
+            }
+            
+            const fromDate = $('#fromdate').val();
+            const toDate = $('#todate').val();
+            if(fromDate !='' && toDate !=''){
+                if(new Date(toDate) < new Date(fromDate))
+                {   
+                    flag = false;
+                    $("#fromdate").css('border-color','red');   
+                    $("#todate").css('border-color','red');   
+                }
+                else{
+                    flag = true;
+                    $("#fromdate").css('border-color','');   
+                    $("#todate").css('border-color','');
+                }
+            }
+            if($("#ServiceType option:selected").val() == ''){
+                $("#ServiceType").css('border-color','red');
+                flag = false;     
+            }
+            else {
+                $("#ServiceType").css('border-color','');   
+            }
+            if($("#AccessTime option:selected").val() == ''){
+                $("#AccessTime").css('border-color','red');
+                flag = false;     
+            }
+            else {
+                $("#AccessTime").css('border-color','');   
+            }
+
+            if($("#fromLocation option:selected").val() == ''){
+                $("#fromLocation").css('border-color','red');
+                flag = false;     
+            }
+            else {
+                $("#fromLocation").css('border-color','');   
+            }
+            
+            if($("#toLocation option:selected").val() == ''){
+                $("#toLocation").css('border-color','red');
+                flag = false;     
+            }
+            else {
+                $("#toLocation").css('border-color','');   
+            }
+    
+            if($("#message").val() == ''){
+                $("#message").css('border-color','red');
+                flag = false;     
+            }
+            else {
+                $("#message").css('border-color','');   
+            }
+            
+            if(flag) {
+                var postData = $('#create-order').serialize();
+                console.log("postData", postData);
+              $(this).attr('disabled','disabled');
+              $.ajax({
+                url:'http://localhost:8080/create-order?userId=' + localStorage.getItem('userId'),
+                data:postData,
+                type:'POST',
+                success:function(res){
+                   
+                   console.log("res",res);
+                    $('.alert-success').remove();
+                    $('#create-order').prepend('<div class="alert alert-success" style="color:#d9334c;" >\
+                    <strong>Message!</strong> Order placed successfully!.\
+                    <p>Order number:'+res.result+'</p>\
+                    </div>');
+                    $("#order-form").removeAttr('disabled');
+                    
+                },
+                error:function(error){
+                  alert(JSON.stringify(error));
+                }   
+              })
+            }
+            else {
+
+            }
+        });
+    });
+</script>
+
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+  $(document).ready(function () {
+	 $( "#fromdate" ).datepicker({ dateFormat: 'yy-mm-dd' });
+	 $( "#todate" ).datepicker({ dateFormat: 'yy-mm-dd' });
+     $( "#dateandtime" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+</script>
+
+
+<script src="js/owl.carousel.js"></script>
+<script>
+            $(document).ready(function () {
+              $('.fadeOut').owlCarousel({
+                items: 1,
+                animateOut: 'fadeOut',
+                loop: true,
+                margin: 10,
+              });
+            });
+</script>
+</body>
+</html>

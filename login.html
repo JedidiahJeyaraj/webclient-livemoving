@@ -124,17 +124,19 @@ function isEmail(email) {
             if(flag) {
               $(this).attr('disabled','disabled');
               $.ajax({
-                url:'https://api-lovemoving.herokuapp.com/login',
+                url:'http://localhost:8080/login',
                 data:$('#signinForm').serialize(),
                 type:'POST',
                 success:function(res){
                     console.log("res", res);
                     if(res['result'] != undefined && res['result'].length>0){
+                      localStorage.setItem('userId', res['result'][0].id);
                         localStorage.setItem('firstname', res['result'][0].firstname);
                         localStorage.setItem('lastname', res['result'][0].lastname);
                         localStorage.setItem('email', res['result'][0].email);
                         localStorage.setItem('phone', res['result'][0].phone);
                         localStorage.setItem('is_customer_login', res['result'][0].is_customer_login);
+                        //window.location = '/shikhar/lovemoving-html/dash-board.html';
                         window.location = '/dash-board.html';
                     }
                     else {
