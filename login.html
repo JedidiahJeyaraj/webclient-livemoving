@@ -124,7 +124,7 @@ function isEmail(email) {
             if(flag) {
               $(this).attr('disabled','disabled');
               $.ajax({
-                url:'http://localhost:8080/login',
+                url:'https://api-lovemoving.herokuapp.com/login',
                 data:$('#signinForm').serialize(),
                 type:'POST',
                 success:function(res){
