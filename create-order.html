@@ -17,7 +17,25 @@
 <link rel="stylesheet" htype="text/css" href="css/animate.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-<title>Love moving </title>
+<title>Create order </title>
+<style>
+    #loading-img {
+    background: url(http://preloaders.net/preloaders/360/Velocity.gif) center center no-repeat;
+    height: 100%;
+    z-index: 20;
+}
+
+.overlay {
+    background: #e9e9e9;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+}
+</style>
 </head>
 <body>
 
@@ -113,7 +131,9 @@
       	 <br class="clear" />
     </div>
 </div>
-
+<div class="overlay">
+    <div id="loading-img"></div>
+</div>
 
 <div class="bigwrap">
   <div class="inrpage-footer">
@@ -240,6 +260,7 @@ function isEmail(email) {
             }
             
             if(flag) {
+                $(".overlay").show();
                 var postData = $('#create-order').serialize();
                 console.log("postData", postData);
               $(this).attr('disabled','disabled');
@@ -248,7 +269,7 @@ function isEmail(email) {
                 data:postData,
                 type:'POST',
                 success:function(res){
-                   
+                    $(".overlay").hide();
                    console.log("res",res);
                     $('.alert-success').remove();
                     $('#create-order').prepend('<div class="alert alert-success" style="color:#d9334c;" >\
@@ -259,6 +280,7 @@ function isEmail(email) {
                     
                 },
                 error:function(error){
+                    $(".overlay").hide();
                   alert(JSON.stringify(error));
                 }   
               })
