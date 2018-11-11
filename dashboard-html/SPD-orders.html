@@ -10,6 +10,25 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive.css" />
 <title>Love moving | Dashboard</title>
+
+<style>
+    #loading-img {
+    background: url(http://preloaders.net/preloaders/360/Velocity.gif) center center no-repeat;
+    height: 100%;
+    z-index: 20;
+}
+
+.overlay {
+    background: #e9e9e9;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+}
+</style>
 </head>
 <body>
 
@@ -51,7 +70,9 @@
          </div>
 </div>
 
-
+<div class="overlay">
+    <div id="loading-img"></div>
+</div>
 
 <div class="content-area">
     <div class="wrap content-wrap">
@@ -135,7 +156,7 @@
                                 var orderId = $(this).closest('span').attr('id');
                                 var status = $(this).text();
                                 if(confirm('Are you confirm to '+status+' this order?')){
-                                    
+                                    $(".overlay").show();
                                     $.ajax({
                                         url:API_URL + '/' + 'accept-decline-order',
                                         type:'POST',
@@ -146,6 +167,7 @@
                                         },
                                         success:function(res){
                                             console.log("res", res);
+                                            $(".overlay").hide();
                                             if(res['result'] != undefined && res['result']['insertId']!='') {
                                                 alert('Order '+ status +' successfully!');
                                             }
@@ -154,6 +176,7 @@
                                             }
                                         },
                                         error:function(err){
+                                            $(".overlay").hide();
                                             alert(err);
                                         }
                                     });
