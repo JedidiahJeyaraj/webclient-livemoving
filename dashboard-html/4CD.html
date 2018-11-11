@@ -80,6 +80,7 @@
                                     <th>Status </th>
                                 </tr>
                             </table>
+                            <img id="preloader" style="margin-left: 393px;" src="../images/preloader.gif" alt="logo">
                             <div class="pagination-wrap">
                                 <div class="pagination-left">Page <a href="#">2</a> of <a href="#">24</a></div>
                                 <div class="pagination-rgt">
@@ -166,6 +167,7 @@
                             }    
                         },
                         error:function(error){
+                            $('#preloader').hide();
                         alert(JSON.stringify(error));
                         }   
                     });

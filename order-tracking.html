@@ -99,6 +99,7 @@
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/custom.js" type="text/javascript"></script>
+<script src="js/conf.js" type="text/javascript"></script>
 <script>
   $(document).ready(function () {
 	 $( "#datepicker" ).datepicker({ dateFormat: 'DD, MM d' });
@@ -121,7 +122,7 @@
                   var orderID = $('#order-search').val();
                   if (orderID!=''){
                     $.ajax({
-                        url:'http://localhost:8080/order-tracking-search/' + localStorage.getItem('userId') + '/' + orderID,
+                        url:API_URL + '/order-tracking-search/' + localStorage.getItem('userId') + '/' + orderID,
                         type:'GET',
                         success:function(res){
                             

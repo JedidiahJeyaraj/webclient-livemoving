@@ -71,6 +71,7 @@
                                     <th>Action </th>
                                 </tr>
                             </table>
+                            <img id="preloader" style="margin-left: 393px;" src="../images/preloader.gif" alt="logo">
                         </div>
                     </div>
            </div>
@@ -133,7 +134,7 @@
                             $('.accept').click(function(e){
                                 var orderId = $(this).closest('span').attr('id');
                                 var status = $(this).text();
-                                if(confirm('Are you confirm to '+status+' this order')){
+                                if(confirm('Are you confirm to '+status+' this order?')){
                                     
                                     $.ajax({
                                         url:API_URL + '/' + 'accept-decline-order',
@@ -169,6 +170,7 @@
                         }    
                     },
                     error:function(error){
+                        $('#preloader').hide();
                     alert(JSON.stringify(error));
                     }   
                 });      

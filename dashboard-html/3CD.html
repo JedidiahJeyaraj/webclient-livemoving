@@ -103,6 +103,7 @@
                                     <th>Action </th>
                                 </tr>
                             </table>
+                            <img id="preloader" style="margin-left: 393px;" src="../images/preloader.gif" alt="logo">
                         </div>
                     </div>
            </div>
@@ -163,6 +164,7 @@
                         }    
                     },
                     error:function(error){
+                        $('#preloader').hide();
                     alert(JSON.stringify(error));
                     }   
                 });

@@ -84,6 +84,7 @@
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/custom.js" type="text/javascript"></script>
+<script src="js/conf.js" type="text/javascript"></script>
 <script>
   $(document).ready(function () {
 	 $( "#datepicker" ).datepicker({ dateFormat: 'DD, MM d' });
@@ -103,7 +104,7 @@
               });
  
                     $.ajax({
-                        url:'http://localhost:8080/my-orders/' + localStorage.getItem('userId'),
+                        url:API_URL + '/my-orders/' + localStorage.getItem('userId'),
                         type:'GET',
                         success:function(res){
                             console.log("res", res);
