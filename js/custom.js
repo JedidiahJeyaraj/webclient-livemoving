@@ -2,7 +2,8 @@
 
 (function(){
     if(!localStorage.getItem('userId')){
-        window.location = '/shikhar/lovemoving-html/login.html';
+        //window.location = '/shikhar/lovemoving-html/login.html';
+        window.location = '/login.html';
     }
 })();
 
