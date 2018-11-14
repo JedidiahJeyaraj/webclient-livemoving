@@ -296,8 +296,9 @@
                             $(".expand").click(function() {  
                                 var ordData = $(this).data("ordinfo")
                                  ,  time1 = $(this).data("time1")
-                                 ,  time2 = $(this).data("time2")
-                                 ,  dataSplitValues = ordData['date'].split('T')[0].split('-');
+                                 ,  time2 = $(this).data("time2");
+                                console.log("ordData", ordData);    
+                                 var dataSplitValues = ordData['date'].split('T')[0].split('-');
                                 $('#jobId').text('#' + ordData['jobId']);
                                var value =  '<tr>\
                                     <td>'+  months[dataSplitValues[1]] + ' ' +dataSplitValues[1]+ ', ' +dataSplitValues[0]+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  '+time1+' — '+time2+'</td>\
