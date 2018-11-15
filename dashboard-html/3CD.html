@@ -165,25 +165,25 @@
                            </div>
                            <div class="tickwrap">
                            		<div class="tickarea">
-                                	<img src="images/tick-active.png" alt="tick-active">
-                                    <span class="active">Job Confirmed </span>
+                                	<img style="visibility:hidden;" class="job_confirm" src="images/tick-active.png" alt="tick-active">
+                                    <span style="visibility:hidden;" id="job_confirm" class="active job_confirm">Job Confirmed </span>
                                 </div>
                            		<div class="tickarea">
-                                	<img src="images/tick-active.png" alt="tick-active">
-                                    <span class="active">On our way to you </span>
+                                	<img style="visibility:hidden;" class="on_the_way" src="images/tick-active.png" alt="tick-active">
+                                    <span style="visibility:hidden;" id="on_the_way" class="active on_the_way">On our way to you </span>
                                 </div>
                            		<div class="tickarea">
-                                	<img src="images/tick-active.png" alt="tick-active">
-                                    <span class="active">Arrived & Working </span>
+                                	<img style="visibility:hidden;" class="arrived" src="images/tick-active.png" alt="tick-active">
+                                    <span style="visibility:hidden;" class="active arrived">Arrived & Working </span>
                                 </div>
                            		<div class="tickarea">
-                                	<img src="images/tick-active.png" alt="tick-active">
-                                    <span class="active">Relocation In Progress </span>
+                                	<img style="visibility:hidden;" class="relocation_progress" src="images/tick-active.png" alt="tick-active">
+                                    <span style="visibility:hidden;" class="active relocation_progress">Relocation In Progress </span>
                                 </div>
                            		<div class="tickarea">
 
-                                	<img src="images/tick-active.png" alt="tick-active">
-                                    <span class="active">Finished </span>
+                                	<img  style="visibility:hidden;" class="finished" src="images/tick-active.png" alt="tick-active">
+                                    <span style="visibility:hidden;" class="active finished">Finished </span>
                                 </div>
                            		<div class="tickarea">
                                 	<img src="images/tick.png" alt="tick">
@@ -279,30 +279,32 @@
                                 var dataSplit = orders[row].lm_ord_date.split('T')[0].split('-');
                                 viewObj.jobId = orders[row].lm_ord_id;
                                 viewObj.date = orders[row].lm_ord_date;
-                                viewObj.serviceType = orders[row].lm_ord_service_type;
+                                //viewObj.serviceType = orders[row].lm_ord_service_type;
                                 viewObj.fromLocation = orders[row].fromlocation;
                                 viewObj.toLocation = orders[row].tolocation;
-                                viewObj.desc = orders[row].lm_ord_comments;
+                                //viewObj.desc = orders[row].lm_ord_comments;
                                 var timeValue = orders[row].lm_ord_access_time.split('-');
                                 $('#user_data').append('<tr>\
                                 <td>' +  months[dataSplit[1]] + ' ' +dataSplit[1]+ ', ' +dataSplit[0]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ orders[row].lm_ord_access_time +'</td>\
                                 <td class="redtxt">' + orders[row].lm_ord_service_type + '</td>\
                                 <td>'+orders[row].fromlocation+'  to  '+orders[row].tolocation+'</td>\
                                 <td>' + orders[row].lm_ord_id + '</td>\
-                                <td><button data-ordinfo='+JSON.stringify(viewObj)+' data-time1='+timeValue[0]+' data-time2='+timeValue[1]+'  class="expand">expand » </button></td>\
+                                <td><button data-desc='+orders[row].lm_ord_comments.replace(/ /g, "_")+' data-lm_ord_service_type='+orders[row].lm_ord_service_type.replace(/ /g, "_")+' data-ordinfo='+JSON.stringify(viewObj)+' data-time1='+timeValue[0]+' data-time2='+timeValue[1]+'  class="expand">expand » </button></td>\
                                 </tr>');
                             }
 
                             $(".expand").click(function() {  
                                 var ordData = $(this).data("ordinfo")
                                  ,  time1 = $(this).data("time1")
+                                 ,  lm_ord_service_type = $(this).data("lm_ord_service_type")
+                                 ,  desc = $(this).data("desc")
                                  ,  time2 = $(this).data("time2");
                                 console.log("ordData", ordData);    
                                  var dataSplitValues = ordData['date'].split('T')[0].split('-');
                                 $('#jobId').text('#' + ordData['jobId']);
                                var value =  '<tr>\
                                     <td>'+  months[dataSplitValues[1]] + ' ' +dataSplitValues[1]+ ', ' +dataSplitValues[0]+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  '+time1+' — '+time2+'</td>\
-                                    <td class="redtxt">'+ordData["serviceType"]+' </td>\
+                                    <td class="redtxt">'+lm_ord_service_type.replace(/_/g, " ")+' </td>\
                                     <td>'+ordData["fromLocation"]+' to '+ordData["toLocation"]+' </td>\
                                     <td>John W. Doe </td>\
                                     <td>'+ordData['jobId']+' </td>\
@@ -310,10 +312,57 @@
                                 </tr>';
                                 $("#jobOverview tr:eq(1)").remove();
                                 $('#jobOverview').append(value);
-                                $('#JobDescription').text(ordData['desc']);
+                                $('#JobDescription').text(desc.replace(/_/g, " "));
                                 $('#fromLocation').text(ordData['fromLocation']);
                                 $('#toLocation').text(ordData['toLocation']);
                                 $(".pop").fadeIn('slow');
+                                //$('.job_confirm').css('visibility','visible')
+                                $.ajax({
+                                    url:API_URL + '/order-status-tracking/' + ordData['jobId'],
+                                    type:'GET',
+                                    success:function(res){
+
+                                        if (res.result != undefined && res.result.length>0) {
+
+                                            for(let i in res.result){
+                                                switch(res.result[i].lm_ord_status){
+
+                                                    case 'S':
+                                                        $('.job_confirm').css('visibility','visible');
+                                                        break;
+                                                    case 'A':
+                                                        $('.job_confirm').css('visibility','visible');
+                                                        break;
+                                                    case 'D':
+                                                        $('.on_the_way').css('visibility','visible');
+                                                        $('#on_the_way').text('Declined');
+                                                        break;
+
+                                                    case 'O':
+                                                        $('.on_the_way').css('visibility','visible');
+                                                        break;
+                                                    
+                                                    case 'G':
+                                                        $('.arrived').css('visibility','visible');
+                                                        break;
+                                                    case 'M':
+                                                        $('.relocation_progress').css('visibility','visible');
+                                                        break;    
+                                                    case 'F':
+                                                        $('.finished').css('visibility','visible');
+                                                        break;        
+                                                        
+                                                }
+                                            }
+                                        }
+
+                                    },
+                                    error:function(err){
+
+                                    }    
+                                });
+
+
                             });
                             $(".pop i").click(function() {   
                                 $(".pop").fadeOut('fast');
