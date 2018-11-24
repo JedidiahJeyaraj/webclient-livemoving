@@ -19,7 +19,7 @@
   	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
          <div class="topbar-rgt">
          	 <div class="profile-area">
-         		<a href="#"><span>Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
+         		<a href="#"><span id="email">Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
              </div>
              <div class="icons">
              	<a href="0chat.html"><img src="images/icon-chat.png" alt="chat"></a>
@@ -57,23 +57,26 @@
     <div class="wrap content-wrap">
       		<div class="left-box">
                 <div class="dname">
-                	<small>Welcome back, John Doe </small>
+                	<small id="username">Welcome back, John Doe </small>
                     Here's what you've missed
                 </div>
                 <div class="threeboxarea">
                 	<div class="perbox">
-                    	<h2>New Service Providers </h2>
-                        <h3>142 </h3>
+                        <h2>New Service Providers </h2>
+                        <img id="preloader" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -15px;" src="../images/preloader.gif" alt="logo">
+                        <h3 id="new_service_providers"> </h3>
                         <a href="#">See what they offer » </a>
                     </div>
                 	<div class="perbox">
-                    	<h2>Ongoing Jobs Today </h2>
-                        <h3>2 Jobs </h3>
+                        <h2>Ongoing Jobs Today </h2>
+                        <img id="preloader_today" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -15px;" src="../images/preloader.gif" alt="logo">
+                        <h3 id="ongoing_jobs_today"> </h3>
                         <a href="#">Stay informed » </a>
                     </div>
                 	<div class="perbox">
-                    	<h2>Notifications </h2>
-                        <h3>3 Alters </h3>
+                        <h2>Notifications </h2>
+                        <img id="preloader_notifications" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -15px;" src="../images/preloader.gif" alt="logo">
+                        <h3 id="notifications"></h3>
                         <a href="#">Explore » </a>
                     </div>
                 </div>
@@ -143,7 +146,78 @@
 <!-- JavaScript
 ================================================== -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="../js/custom.js" type="text/javascript"></script>
+<script src="../js/conf.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#email').text(localStorage.getItem('email'));
+        $('#username').html('<h2>' + localStorage.getItem('firstname') + '  ' + localStorage.getItem('lastname') + '</h2>');
+        $('#username').text('Welcome back, ' + localStorage.getItem('firstname') + '  ' +  localStorage.getItem('lastname'));
+        //new_service_providers
+        //ongoing_jobs_today
+        $.ajax({
+            url:API_URL + '/new-service-providers',
+            type:'GET',
+            success:function(res){
+               if (res.result!=undefined){
+                   setTimeout(function(){
+                    $('#preloader').hide();
+                   $('#new_service_providers').text(res.result[0].service_provider);
+                   }, 5000);
+               }
+               else {
+                $('#new_service_providers').text(0);
+               } 
+            },
+            error:function(error){
+                alert(error);
+            }
+        });
+
+        $.ajax({
+            url:API_URL + '/todays-ongoing-jobs',
+            type:'GET',
+            success:function(res){
+               if (res.result!=undefined){
+                setTimeout(function(){
+                    $('#preloader_today').hide();
+                   $('#ongoing_jobs_today').text(res.result[0].todays_ongoing_jobs + ' Jobs');
+                   }, 5000);
+               }
+               else {
+                $('#ongoing_jobs_today').text('0 Jobs');
+               } 
+            },
+            error:function(error){
+                alert(error);
+            }
+        });
+
+        $.ajax({
+            url:API_URL + '/new-alerts/' + localStorage.getItem('userId'),
+            type:'GET',
+            success:function(res){
+               if (res.result!=undefined){
+                setTimeout(function(){
+                    $('#preloader_notifications').hide();
+                   $('#notifications').text(res.result[0].notification_count + ' Alters');
+                   }, 5000);
+               }
+               else {
+                $('#notifications').text('0 Alters');
+               } 
+            },
+            error:function(error){
+                alert(error);
+            }
+        });
+
+    });    
+
+</script>
 
 </body>
 </html>

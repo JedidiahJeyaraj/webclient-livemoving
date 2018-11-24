@@ -151,6 +151,12 @@
                                         case 'D':
                                         orders[row].lm_order_status = 'Declined';
                                         break;
+                                        case 'O':
+                                        orders[row].lm_order_status = 'In-progress';
+                                        break;
+                                        case 'F':
+                                        orders[row].lm_order_status = 'Delivered';
+                                        break;
                                     }
                                     $('#user_data').append('<tr>\
                                     <td>' +  months[dataSplit[1]] + ' ' +dataSplit[1]+ ', ' +dataSplit[0]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ orders[row].lm_ord_access_time +'</td>\

@@ -10,25 +10,6 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive.css" />
 <title>Love moving | Dashboard</title>
-
-<style>
-    #loading-img {
-    background: url(http://preloaders.net/preloaders/360/Velocity.gif) center center no-repeat;
-    height: 100%;
-    z-index: 20;
-}
-
-.overlay {
-    background: #e9e9e9;
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0.5;
-}
-</style>
 </head>
 <body>
 
@@ -38,7 +19,7 @@
   	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
          <div class="topbar-rgt">
          	 <div class="profile-area">
-         		<a href="#"><span id='username'>Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
+         		<a href="#"><span id="firstname">Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
              </div>
              <div class="icons">
              	<a href="0chat.html"><img src="images/icon-chat.png" alt="chat"></a>
@@ -60,47 +41,48 @@
             <label for="show-menu" class="show-menu">Show Menu</label>
 			<input type="checkbox" id="show-menu" role="button">
          	<ul id="menu">
-                <li><a href="1CD.html" class="active">Overview </a></li>
-                <li><a href="2CD.html">Profile </a></li>
-                <li><a href="3CD.html">Bookings </a></li>
-                <li><a href="4CD.html">Notifications </a></li>
-                <li><a href="5CD.html">Financial </a></li>
-                <li><a href="6CD.html">Settings </a></li>
+                <li><a href="1SPD.html">Overview </a></li>
+                <li><a href="2SPD.html">Profile </a></li>
+                <li><a href="SPD-orders.html" class="active">Orders </a></li>
+                <li><a href="3SPD.html">Financial </a></li>
+                <li><a href="4SPD.html">Training </a></li>
+                <li><a href="5SPD.html">Calendar </a></li>
+                <li><a href="6SPD.html">Settings </a></li>
             </ul>
          </div>
 </div>
 
 <div class="overlay">
-    <div id="loading-img"></div>
-</div>
-
-<div class="content-area">
-    <div class="wrap content-wrap">
-    	   
-           <div class="whbox">
-                    <div class="text-hd">
-                        <h2><strong>Placed orders </strong></h2>
-                    </div>
-                    <div class="table-sc-wrap"> 
-                        <div class="table-wrap three-cd-table">
-                            <table id="user_data">
-                                <tr>
-                                    <th>Date </th>
-                                    <th>Service Type </th>
-                                    <th>Location </th>
-                                    <th>Job ID </th>
-                                    <th>Action </th>
-                                </tr>
-                            </table>
-                            <img id="preloader" style="margin-left: 393px;" src="../images/preloader.gif" alt="logo">
-                        </div>
-                    </div>
-           </div>
+        <div id="loading-img"></div>
     </div>
-</div>
-
-<div class="footer-wrap"></div>
-
+    
+    <div class="content-area">
+        <div class="wrap content-wrap">
+               
+               <div class="whbox">
+                        <div class="text-hd">
+                            <h2><strong>Placed orders </strong></h2>
+                        </div>
+                        <div class="table-sc-wrap"> 
+                            <div class="table-wrap three-cd-table">
+                                <table id="user_data">
+                                    <tr>
+                                        <th>Date </th>
+                                        <th>Service Type </th>
+                                        <th>Location </th>
+                                        <th>Job ID </th>
+                                        <th>Action </th>
+                                    </tr>
+                                </table>
+                                <img id="preloader" style="margin-left: 393px;" src="../images/preloader.gif" alt="logo">
+                            </div>
+                        </div>
+               </div>
+        </div>
+    </div>
+    
+    <div class="footer-wrap"></div>
+    
 
 <!-- JavaScript
 ================================================== -->
@@ -113,12 +95,12 @@
 
 <script type="text/javascript">
 
-
+    isServiceProvider();
     $(document).ready(function () {
         $('#username').text('Welcome, ' + localStorage.getItem('firstname'));
 
         $.ajax({
-                    url:API_URL + '/my-orders/' + localStorage.getItem('userId'),
+                    url:API_URL + '/order-service-provider/' + localStorage.getItem('userId'),
                     type:'GET',
                     success:function(res){
                         console.log("res", res);
@@ -140,21 +122,52 @@
                                 '11':'Nev',
                                 '12':'Dec'
                             };    
+                            var orderStatus = '';
                             for(var row in orders){
                                 var dataSplit = orders[row].lm_ord_date.split('T')[0].split('-');
                                 console.log(orders[row].lm_ord_id);
+                            
+                                switch(orders[row].lm_ord_status){
+                                    case 'S':
+                                    orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Accept</a>&nbsp;&nbsp;&nbsp;<a class="accept" style="cursor:pointer;">Decline</a></span>';
+                                    break;
+                                    case 'A':
+                                    orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">In-progress</a>&nbsp;&nbsp;&nbsp;<a class="accept" style="cursor:pointer;">Decline</a></span>';
+                                    break;
+                                    case 'O':
+                                    orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Delivered?</a>&nbsp;&nbsp;&nbsp;<a class="accept" style="cursor:pointer;">Decline</a></span>';
+                                    break;
+                                    case 'F':
+                                    orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Moved</a>';
+                                    break;
+                                }
+                                
                                 $('#user_data').append('<tr>\
                                 <td>' +  months[dataSplit[1]] + ' ' +dataSplit[1]+ ', ' +dataSplit[0]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ orders[row].lm_ord_access_time +'</td>\
                                 <td class="redtxt">' + orders[row].lm_ord_service_type + '</td>\
                                 <td>'+orders[row].fromlocation+'  to  '+orders[row].tolocation+'</td>\
                                 <td>' + orders[row].lm_ord_id + '</td>\
-                                <td><span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Accept</a>&nbsp;&nbsp;&nbsp;<a class="accept" style="cursor:pointer;">Decline</a></span></td>\
+                                <td>'+orderStatus+'</td>\
                                 </tr>');
                             }
                             
                             $('.accept').click(function(e){
                                 var orderId = $(this).closest('span').attr('id');
                                 var status = $(this).text();
+                                var statusFlag = '';
+                                //In-progress
+                                if(status == 'Accept'){
+                                    statusFlag = 'A';
+                                }
+                                else if (status == 'Decline'){
+                                    statusFlag = 'D';
+                                }
+                                else if (status == 'In-progress'){
+                                    statusFlag = 'O';
+                                }
+                                else if(status == 'Delivered?'){
+                                    statusFlag = 'F';   
+                                }
                                 if(confirm('Are you confirm to '+status+' this order?')){
                                     $(".overlay").show();
                                     $.ajax({
@@ -163,7 +176,7 @@
                                         data:{
                                             userid:localStorage.getItem('userId'),
                                             orderid:orderId,
-                                            status:(status=='Accept'?'A':'D')
+                                            status:statusFlag
                                         },
                                         success:function(res){
                                             console.log("res", res);
@@ -200,6 +213,8 @@
     });    
 
 </script>
+
+
 
 </body>
 </html>

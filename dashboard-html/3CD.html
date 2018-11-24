@@ -61,27 +61,13 @@
                     </div>
                     <div class="table-sc-wrap"> 
                         <div class="table-wrap three-cd-table">
-                            <table>
+                            <table id="ongoing_user_data">
                                 <tr>
                                     <th width="30%">Date </th>
                                     <th>Service Type </th>
                                     <th >Location </th>
                                     <th>Job ID </th>
                                     <th>Action </th>
-                                </tr>
-                                <tr>
-                                    <td>March 32, 2018 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  8 AM — 10 AM</td>
-                                    <td class="redtxt">Full Relocation </td>
-                                    <td>Melbourne to Sydney </td>
-                                    <td>59302401 </td>
-                                    <td><button class="expand">expand » </button></td>
-                                </tr>
-                                <tr>
-                                    <td>March 32, 2018 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8 AM — 10 AM</td>
-                                    <td class="redtxt">Packing </td>
-                                    <td>Sydney Only </td>
-                                    <td>35939852 </td>
-                                    <td><button class="expand">expand » </button></td>
                                 </tr>
                             </table>
                         </div>
@@ -164,7 +150,9 @@
                                 </div>
                            </div>
                            <div class="tickwrap">
+                                
                            		<div class="tickarea">
+                                        <img id="status-preloader" style="margin-left: 393px;" align="center" src="../images/preloader.gif" alt="logo">
                                 	<img style="visibility:hidden;" class="job_confirm" src="images/tick-active.png" alt="tick-active">
                                     <span style="visibility:hidden;" id="job_confirm" class="active job_confirm">Job Confirmed </span>
                                 </div>
@@ -228,9 +216,10 @@
                              </div>
                          </div>
                          <div class="feedback-area">
+                             
                              <h6>Share your experience with this Service Provider </h6>
-                           	 <textarea name="feedback" rows="5"	col="5" value="" placeholder="Lorem ipsum"></textarea>
-                             <input type="submit" name="submit" value="PROVIDE FEEDBACK" />
+                                <textarea name="feedback" rows="5"	col="5" value="" id="feedback_value" placeholder="Lorem ipsum"></textarea>
+                             <input type="submit" name="submit" id="feedback" value="PROVIDE FEEDBACK" />
                          </div>
                          <br class="clear" /> 
                     </div>
@@ -248,6 +237,36 @@
 
 
     $(document).ready(function () {
+        
+        $('#feedback').click(function(){
+            
+            var feedback = $('#feedback_value').val();
+            var jobId = $('#jobId').text();
+            //alert();
+            if(feedback == '') {
+                $('#feedback_value').css('border-color','red');
+            }
+            else{
+                $("#feedback-area").attr('disabled','disabled');
+                $.ajax({
+                    url:API_URL + '/customer-feedback',
+                    type:'POST',
+                    data:{feedback_note:feedback, orderid:jobId.substr(1).trim()},
+                    success:function(res){
+                        $("#feedback-area").attr('disabled','');
+                        $('#feedback_value').val('');
+                        alert("Feedback submitted succesfully!");
+                    },
+                    error:function(err){
+                        $('#feedback_value').val('');
+                        $("#feedback-area").attr('disabled','');
+                        alert(err);
+                    }
+                });
+                $('#feedback_value').css('border-color','');   
+            } 
+
+        });
         $('#username').text('Welcome, ' + localStorage.getItem('firstname'));
 
         $.ajax({
@@ -270,7 +289,7 @@
                                 '08':'Aug',
                                 '09':'Sept',
                                 '10':'Oct',
-                                '11':'Nev',
+                                '11':'Nov',
                                 '12':'Dec'
                             };
                             var viewObj = {};    
@@ -284,13 +303,19 @@
                                 viewObj.toLocation = orders[row].tolocation;
                                 //viewObj.desc = orders[row].lm_ord_comments;
                                 var timeValue = orders[row].lm_ord_access_time.split('-');
-                                $('#user_data').append('<tr>\
+                                var tableData = '<tr>\
                                 <td>' +  months[dataSplit[1]] + ' ' +dataSplit[1]+ ', ' +dataSplit[0]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ orders[row].lm_ord_access_time +'</td>\
                                 <td class="redtxt">' + orders[row].lm_ord_service_type + '</td>\
                                 <td>'+orders[row].fromlocation+'  to  '+orders[row].tolocation+'</td>\
                                 <td>' + orders[row].lm_ord_id + '</td>\
                                 <td><button data-desc='+orders[row].lm_ord_comments.replace(/ /g, "_")+' data-lm_ord_service_type='+orders[row].lm_ord_service_type.replace(/ /g, "_")+' data-ordinfo='+JSON.stringify(viewObj)+' data-time1='+timeValue[0]+' data-time2='+timeValue[1]+'  class="expand">expand » </button></td>\
-                                </tr>');
+                                </tr>';
+                                if (orders[row].lm_ord_status == 'O'){
+                                    $('#ongoing_user_data').append(tableData);
+                                }
+                                else {
+                                    $('#user_data').append(tableData);
+                                }
                             }
 
                             $(".expand").click(function() {  
@@ -302,6 +327,7 @@
                                 console.log("ordData", ordData);    
                                  var dataSplitValues = ordData['date'].split('T')[0].split('-');
                                 $('#jobId').text('#' + ordData['jobId']);
+                                
                                var value =  '<tr>\
                                     <td>'+  months[dataSplitValues[1]] + ' ' +dataSplitValues[1]+ ', ' +dataSplitValues[0]+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  '+time1+' — '+time2+'</td>\
                                     <td class="redtxt">'+lm_ord_service_type.replace(/_/g, " ")+' </td>\
@@ -322,6 +348,7 @@
                                     type:'GET',
                                     success:function(res){
 
+                                        $('#status-preloader').hide();
                                         if (res.result != undefined && res.result.length>0) {
 
                                             for(let i in res.result){
@@ -358,7 +385,7 @@
 
                                     },
                                     error:function(err){
-
+                                        $('#status-preloader').hide();
                                     }    
                                 });
 
@@ -366,6 +393,14 @@
                             });
                             $(".pop i").click(function() {   
                                 $(".pop").fadeOut('fast');
+                                $('.job_confirm').css('visibility','hidden');
+                                $('.job_confirm').css('visibility','hidden');
+                                $('.on_the_way').css('visibility','hidden');
+                                $('#on_the_way').text('Declined');
+                                $('.on_the_way').css('visibility','hidden');
+                                $('.arrived').css('visibility','hidden');
+                                $('.relocation_progress').css('visibility','hidden');
+                                $('.finished').css('visibility','hidden');
                             });
                         }
                         else if(res['result']!=undefined && res['result'].length == 0){

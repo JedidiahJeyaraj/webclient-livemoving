@@ -5,6 +5,9 @@
         //window.location = '/shikhar/lovemoving-html/login.html';
         window.location = '/login.html';
     }
+    else {
+        $('#firstname').text('Welcome ' + localStorage.getItem('firstname'));
+    }
 })();
 
 
@@ -21,5 +24,14 @@ $(document).ready(function(){
         //window.location = '/shikhar/lovemoving-html/login.html';
         window.location = '/login.html';
       });
-
 });
+
+
+
+function isServiceProvider(){
+    if(localStorage.getItem('is_customer_login') != 2){
+        alert("Don't have access to partner dashboard!");
+        //window.location = '/shikhar/lovemoving-html/dash-board.html';
+        window.location = '/dash-board.html';  
+    }
+}
