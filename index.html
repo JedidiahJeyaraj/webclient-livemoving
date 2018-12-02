@@ -7,13 +7,14 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 <!-- Owl Stylesheets -->
 <link rel="stylesheet" htype="text/css" href="css/owl.carousel.min.css">
 <link rel="stylesheet" htype="text/css" href="css/owl.theme.default.min.css">
 <link rel="stylesheet" htype="text/css" href="css/animate.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<link rel="stylesheet" href="css/jquery-ui.css">
 <title>Love moving </title>
 </head>
 <body>
@@ -116,33 +117,44 @@
             </ul>
             <div class="resp-tabs-container">
                 <div>
-                	<form name="form2" method="post" action="">
-                  	  <select name="room">
-                          <option selected="selected">How many rooms ?</option>
+                	<form name="form2" method="post" id="create-order" action="">
+                  	  <select name="room" id="room">
+                          <option value="">How many rooms ?</option>
                           <option>rooms 1</option>
                           <option>rooms 2</option>
                           <option>rooms 3</option>
                           <option>rooms 4</option>
                       </select>
-                  	  <select name="content">
-                          <option selected="selected">Amount of content </option>
+                  	  <select name="content" id="amount">
+                          <option value=""  >Amount of content </option>
                           <option>Light </option>
                           <option>Medium </option>
                           <option>Full </option>
                       </select>
-                      <input type="text" name="from" value="" placeholder="FROM" />
-                      <input type="text" name="to" value="" placeholder="To" />
-                      <div class="formboxfull"><input type="text" id="datepicker" value="Wednesday, May 9"></div>
+
                       <div class="formboxwrap">
-                          <select name="time">
-                              <option selected="selected">12:00 — 18:00</option>
-                              <option>12:00 — 18:00</option>
-                              <option>12:00 — 18:00</option>
-                              <option>12:00 — 18:00</option>
-                              <option>12:00 — 18:00</option>
+                        <select name="from_location" id="fromLocation">
+                            
+                        </select>
+                    </div>
+
+                    <div class="formboxwrap">
+                        <select name="to_location" id="toLocation">
+                            
+                        </select>
+                    </div>
+                      
+                      <input type="text" name="from" value="" id="from_datepicker" placeholder="FROM" />
+                      <input type="text" name="to" value="" id="to_datepicker" placeholder="To" />
+                      <div class="formboxfull"><input type="text" name="when_deliver" id="when_datepicker" placeholder="Wednesday, May 9"></div>
+                      <div class="formboxwrap">
+                          <select name="time" id="time">
+                            <option value="">--Select access time--</option>
+                            <option value="8am - 1pm">8am - 1pm</option>
+                            <option value="2pm - 6pm">2pm - 6pm</option>
                           </select>
                       </div>
-                      <input type="submit" name="submit" data-popup-open="popup-1" value="FIND NOW" />
+                      <input type="submit" name="submit" id="search_button" data-popup-open="popup-1" value="FIND NOW" />
                       <br class="clear" />
                  </form>               
                 </div>
@@ -173,7 +185,7 @@
                               <option>12:00 — 18:00</option>
                           </select>
                       </div>
-                      <input type="submit" name="submit" data-popup-open="popup-1" value="FIND NOW" />
+                      <input type="submit" name="submit"  data-popup-open="popup-1" value="FIND NOW" />
                       <br class="clear" />
                  </form>                
                 </div>
@@ -191,7 +203,7 @@
 		<h2><span>Love</span>moving </h2>
         <h6>Value = <span>6AUD</span></h6>
 		<p>Donec in volutpat nisi. In quam lectus, aliquet rhoncus cursus a, congue et arcu. Vestibulum tincidunt neque id nisi pulvinar aliquam. Nulla luctus luctus ipsum at ultricies. Nullam nec velit dui. Nullam sem eros, pulvinar sed pellentesque ac, feugiat et turpis. </p>
-		
+		<button style="margin-left: 600px;font-size: 24px;font-weight: bold;" id="go_to_booking_page">Go</button>
 		<a class="popup-close" data-popup-close="popup-1" href="#">x</a>
 	</div>
 </div>
@@ -569,13 +581,16 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
   $(document).ready(function () {
-	 $( "#datepicker" ).datepicker({ dateFormat: 'DD, MM d' });
+	 $( "#when_datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+     $( "#from_datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+     $( "#to_datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
 	 $( "#datepicker-2" ).datepicker({ dateFormat: 'DD, MM d' });
   });
 </script>
 
 
 <script src="js/owl.carousel.js"></script>
+<script src="../lovemoving-html/js/conf.js"></script>
 <script>
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -583,6 +598,66 @@ function isEmail(email) {
     return regex.test(email);
 }
            $(document).ready(function () {
+
+            $('#go_to_booking_page').click(function(){
+                var postData = $('#create-order').serializeArray();
+                console.log(postData[0]);
+                var data = {};
+                for(var i in postData){
+
+                    switch(postData[i].name){
+                        case 'room':
+                        data.room = postData[i].value; 
+                        break;
+                        case 'content':
+                        data.content = postData[i].value; 
+                        break;
+                        case 'from_location':
+                        data.from_location = postData[i].value; 
+                        break;
+                        case 'to_location':
+                        data.to_location = postData[i].value; 
+                        break;
+                        case 'from':
+                        data.from = postData[i].value; 
+                        break;
+                        case 'to':
+                        data.to = postData[i].value; 
+                        break;
+                        case 'time':
+                        data.time = postData[i].value; 
+                        break;
+                        case 'when_deliver':
+                        data.when_deliver = postData[i].value; 
+                        break;
+                    }
+
+                }
+                window.location.href = "https://lovemoving.herokuapp.com/service-provider.html?data="+JSON.stringify(data);
+                //window.location.href = "http://localhost/shikhar/lovemoving-html/service-provider.html?data="+JSON.stringify(data);
+            //    window.location.href = "http://localhost/shikhar/lovemoving-html/service-provider.html?\
+            //    room"+room+"&content="+content+"&from_location="+from_location+"&to_location\
+            //    ="+to_location+"&from="+from+"&to="+to+"&time="+time;
+            }); 
+
+               $.ajax({
+            "url": API_URL + "/list-location",
+            "type": "GET",
+            success:function(res){
+                console.log(res);
+                res = res.result;
+                var options = '<option value="">---Select options---</option>';
+                for(var i in res){
+                    options += '<option value='+res[i].lm_lc_id+'>'+res[i].lm_lc_name+'</option>';
+                }
+                $('#fromLocation').append(options);
+                $('#toLocation').append(options);
+            },
+            error:function(err){
+                alert(err);               
+            }    
+        });
+
               $('.fadeOut').owlCarousel({
                 items: 1,
                 animateOut: 'fadeOut',
@@ -649,9 +724,80 @@ function isEmail(email) {
 $(function() {
 	//----- OPEN
 	$('[data-popup-open]').on('click', function(e) {
-		var targeted_popup_class = jQuery(this).attr('data-popup-open');
-		$('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
 
+        var flag = true;
+        e.preventDefault();
+        
+        if($("#room option:selected").val() == ''){
+            $("#room").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#room").css('border-color','');   
+        }
+
+        if($("#amount option:selected").val() == ''){
+            $("#amount").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#amount").css('border-color','');   
+        }
+
+        if($("#fromLocation option:selected").val() == ''){
+            $("#fromLocation").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#fromLocation").css('border-color','');   
+        }
+
+        if($("#toLocation option:selected").val() == ''){
+            $("#toLocation").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#toLocation").css('border-color','');   
+        }
+
+        if($("#from_datepicker").val() == ''){
+            $("#from_datepicker").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#from_datepicker").css('border-color','');   
+        }
+
+        if($("#to_datepicker").val() == ''){
+            $("#to_datepicker").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#to_datepicker").css('border-color','');   
+        }
+
+        if($("#when_datepicker").val() == ''){
+            $("#when_datepicker").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#when_datepicker").css('border-color','');   
+        }
+        
+        if($("#time option:selected").val() == ''){
+            $("#time").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#time").css('border-color','');   
+        }
+
+        if(flag){
+            var targeted_popup_class = jQuery(this).attr('data-popup-open');
+		    $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+        }
+        //alert(1);
+		
 		e.preventDefault();
 	});
 

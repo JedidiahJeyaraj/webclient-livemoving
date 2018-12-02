@@ -1,0 +1,69 @@
+  #loading-img {
+    background: url(http://preloaders.net/preloaders/360/Velocity.gif) center center no-repeat;
+    height: 100%;
+    z-index: 20;
+}
+
+.overlay {
+    background: #e9e9e9;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+.show-result {
+  margin: 10px;
+  padding: 10px;
+  color: green;
+  font-size: 20px;
+}
+
+.star-rating s:hover,
+.star-rating s.active {
+    color:yellow;
+}
+.star-rating-rtl s:hover,
+.star-rating-rtl s.active {
+    color: yellow;
+}
+
+.star-rating s,
+.star-rating-rtl s {
+    color: black;
+    font-size: 30px;
+    cursor: default;
+    text-decoration: none;
+    line-height: 50px;
+}
+.star-rating {
+    padding: 2px;
+}
+.star-rating-rtl {
+    background: #555;
+    display: inline-block;
+    border: 2px solid #444;
+}
+.star-rating-rtl s {
+    color: yellow;
+}
+.star-rating s:hover:before,
+.star-rating s.rated:before,
+.star-rating s.active:before {
+    content: "\2605";
+}
+.star-rating s:before {
+    content: "\2606";
+}
+.star-rating-rtl s:hover:after,
+.star-rating-rtl s.rated:after,
+.star-rating-rtl s.active:after {
+    content: "\2605";
+}
+
+.star-rating-rtl s:after {
+    content: "\2606";
+}

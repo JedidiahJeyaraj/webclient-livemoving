@@ -4,16 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
+<script src="js/common.js" type="text/javascript"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<link rel="stylesheet" type="text/css" href="css/preloader_css.css" />
 <title>Love moving | Dashboard </title>
 </head>
+
 <body>
 
-
+    
 <div class="whitehdr">
   <div class="wrap tbpadding">
   	  	 <h1 class="logowrap"><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>	
@@ -30,6 +33,9 @@
              <div class="icons">
              	<a href="#"><img src="images/icon-setting.png" alt="setting"></a>
              </div>
+             <div class="profile-area">
+                <h4 id="logout" style="cursor: pointer;">Logout</h4>
+            </div>
          </div>
    </div>
 </div>
@@ -66,13 +72,11 @@
                              </div>
                         </div>
                         <div class="profile-desc-wrap">
-                        	 <div class="client-name"><h2>Lauren McTonner </h2></div>
+                        	 <div class="client-name"><h2 id="first_and_last_name"></h2></div>
                              <div class="onoff"><span></span>ONLINE NOW </div>
                              <br class="clear" />
-                             <h3>CEO — Perthmovalist LLC </h3>
-                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mauris porttitor, aliquet magna eget, sceleris que sem. Mauris tempor justo ut fringilla, velfaucibus nisl interdum. Vestibulum ante ipsum primis in faucibus orci. <br /><br />
-                             
-Fusce ante elit, venenatis sodales ultrices a, luctus vel lorem. Morbi nisi magna, dictum eu hendrerit sed, posuere eu tortor. Aliquam eget fermentum eros. Fusce sed neque at est imperdiet tristique. Cras vestibulum metus mauris, ac faucibus est tincidunt ac. </p>
+                             <h3 id="company_name"></h3>
+                             <p id="mydesc"> </p>
 							 <a class="rdmore" href="#">read more » </a>
                         </div>
             </div>
@@ -82,16 +86,20 @@ Fusce ante elit, venenatis sodales ultrices a, luctus vel lorem. Morbi nisi magn
                   <a href="#">See Reviews </a>
                </div>
                <div class="reviews-wrap">
-               		<div class="reviews">
-                        <div class="starwrap">
+                    
+                    
+               		 <div class="reviews">
+                            <div ><span id="fixture"></span><span id="overall_rating"> </span></div>    
+                        <!-- <div class="starwrap"> -->
+                                
+                           <!-- <a href="#"><img src="images/icon-star.png" alt="star"></a>
                            <a href="#"><img src="images/icon-star.png" alt="star"></a>
                            <a href="#"><img src="images/icon-star.png" alt="star"></a>
                            <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                           <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                           <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                           <span><strong>4.9 </strong>&nbsp;&nbsp; (412 Reviews) </span>
-                        </div>                     
-                    </div>
+                           <a href="#"><img src="images/icon-star.png" alt="star"></a> -->
+                           
+                        <!-- </div>                      -->
+                    </div> 
                </div>
                <div class="text-hd-rgt">
                   <h4>Badges </h4>
@@ -125,25 +133,10 @@ Full Relocation Services, 24/7 Support </p>
                <h3>Latest Reviews </h3>
            </div>
            <div class="reviews-wrap">
-               		<div class="reviews smbbdr">
-                    	<div class="reviews-lft">
-                                <h2>from <a href="#">Mark Landerman</a> on March 32, 2018 </h2>
-                                <div class="starwrap">
-                                    <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                    <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                    <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                    <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                    <a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                    <span><strong>4.9</strong>/5.0</span>
-                                </div> 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mauris porttitor, aliquet magna eget, sceleris que sem. Mauris tempor justo ut fringilla, velfaucibus nisl interdum. Vestibulum ante ipsum primis in faucibus orci.  Fusce ante elit, venenatis sodales. </p>        
-                        </div> 
-                        <div class="reviews-rgt">
-                        	<h4>Provided Services </h4>
-               				<p>Boxing, Packaging, Unboxing, Logistics, Trucks, Fragile Handling, Furniture Handling, Storage, Full Relocation Services, 24/7 Support </p>
-                        </div>           
+               		<div class="reviews smbbdr individual_review">
+                    	     
                     </div>
-               		<div class="reviews smbbdr">
+               		<!-- <div class="reviews smbbdr">
                     	<div class="reviews-lft">
                                 <h2>from <a href="#">Mark Landerman</a> on March 32, 2018 </h2>
                                 <div class="starwrap">
@@ -160,7 +153,7 @@ Full Relocation Services, 24/7 Support </p>
                         	<h4>Provided Services </h4>
                				<p class="blutxt">Boxing, Packaging, Unboxing, Logistics, Trucks, Fragile Handling, Furniture Handling, Storage, Full Relocation Services, 24/7 Support </p>
                         </div>                       
-                    </div>
+                    </div> -->
                     <div class="pagination-wrap">
                         	<div class="pagination-left">Page <a href="#">2</a> of <a href="#">24</a></div>
                         	<div class="pagination-rgt">
@@ -183,15 +176,109 @@ Full Relocation Services, 24/7 Support </p>
 
 
 <div class="footer-wrap"></div>
-
+<div class="overlay">
+    <div id="loading-img"></div>
+</div>
 
 <!-- JavaScript
 ================================================== -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="../js/custom.js" type="text/javascript"></script>
 <script src="../js/conf.js" type="text/javascript"></script>
+<script src="js/common.js" type="text/javascript"></script>
+
+<script>
 
 
+$(document).ready(function(){
+
+
+    $(".overlay").show();
+    $('#first_and_last_name').text(jsUcfirst(localStorage.getItem('firstname')) + ' ' + jsUcfirst(localStorage.getItem('lastname')));
+    //$('#overall_rating').html('<strong >4.9 </strong>&nbsp;&nbsp; (412 Reviews)');
+
+    $.ajax({
+        url:API_URL + '/service-provider-rating/' + localStorage.getItem('userId'),
+        type:'GET',
+        success:function(res){
+            //console.log();
+            //alert(res.result[0].sum_of_rating/res.result[0].n_rating);
+            if (res.result[0].sum_of_rating != null && res.result[0].n_rating !=null){
+                var val = (res.result[0].sum_of_rating / res.result[0].n_rating).toFixed(1)
+                addScore(Math.round(val) * 20, $("#fixture"));
+                $('#overall_rating').html('<strong >'+val+' </strong>&nbsp;&nbsp; ('+res.result[0].n_rating+' Reviews)');
+            }
+            else {
+                $('#overall_rating').html('<strong >0.0 </strong>&nbsp;&nbsp; (0 Reviews)');
+            }
+        },
+        error:function(err){
+            alert(err);
+        }
+    });
+    
+    $.ajax({
+        url:API_URL + '/users/' + localStorage.getItem('userId'),
+        type:'GET',
+        success:function(res){
+            $(".overlay").hide();
+            console.log(res.result[0]);
+            if(res.result[0].user_desc !='' && res.result[0].user_desc !=null)
+            $('#mydesc').text(res.result[0].user_desc);
+            else
+            $('#mydesc').text("Please provide your descriptions in details");
+            if(res.result[0].user_company !="" && res.result[0].user_company !=null)
+            $('#company_name').text(res.result[0].user_company);
+            else
+            $('#company_name').text("Not Available");
+            //
+        },
+        error:function(err){
+            $(".overlay").hide();
+            alert(err);
+        }
+    });
+
+    $.ajax({
+        url:API_URL + '/service-provider-rating-by-indivisual_users/' + localStorage.getItem('userId'),
+        type:'GET',
+        success:function(res){
+            //alert(res.result[0].sum_of_rating/res.result[0].n_rating);
+            var result = res.result;
+            var months = {
+                                '01':'Jan',
+                                '02':'Feb',
+                                '03':'Mar',
+                                '04':'April',
+                                '05':'May',
+                                '06':'June',
+                                '07':'July',
+                                '08':'Aug',
+                                '09':'Sept',
+                                '10':'Oct',
+                                '11':'Nov',
+                                '12':'Dec'
+                            };
+            var dataSplit = '';
+            for(var i in result){
+
+                dataSplit = result[i].created_at.split('T')[0].split('-');
+                var reviewHtml = '<div class="reviews-lft">\
+                                <h2>from <a href="#">' + jsUcfirst(result[i].firstname) + '  ' + jsUcfirst(result[i].lastname) + ' </a> on ' +  months[dataSplit[1]] + ' ' + dataSplit[2] + ', ' +dataSplit[0] + ' </h2>\
+                                <div class="starwrap">\
+                                <span id="fixture-'+result[i].lm_ord_rating+'"><span class="stars-container stars-'+ (result[i].lm_ord_rating * 20).toString()+ '"> ★★★★★</span>\
+                                <span><strong>'+result[i].lm_ord_rating+'.0</strong>/5.0</span></div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu mauris porttitor, aliquet magna eget, sceleris que sem. Mauris tempor justo ut fringilla, velfaucibus nisl interdum. Vestibulum ante ipsum primis in faucibus orci.  Fusce ante elit, venenatis sodales. </p></div><div class="reviews-rgt"><h4>Provided Services </h4><p>Boxing, Packaging, Unboxing, Logistics, Trucks, Fragile Handling, Furniture Handling, Storage, Full Relocation Services, 24/7 Support </p></div>';
+                $('.individual_review').append(reviewHtml);
+            }
+        },
+        error:function(err){
+            alert(err);
+        }
+    });
+
+})
+
+</script>
 
 </body>
 </html>

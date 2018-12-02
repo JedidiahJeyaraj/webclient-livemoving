@@ -10,6 +10,78 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive.css" />
 <title>Love moving | Dashboard </title>
+<style>
+    #loading-img {
+    background: url(http://preloaders.net/preloaders/360/Velocity.gif) center center no-repeat;
+    height: 100%;
+    z-index: 20;
+}
+
+.overlay {
+    background: #e9e9e9;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+.show-result {
+  margin: 10px;
+  padding: 10px;
+  color: green;
+  font-size: 20px;
+}
+
+.star-rating s:hover,
+.star-rating s.active {
+    color:yellow;
+}
+.star-rating-rtl s:hover,
+.star-rating-rtl s.active {
+    color: yellow;
+}
+
+.star-rating s,
+.star-rating-rtl s {
+    color: black;
+    font-size: 50px;
+    cursor: default;
+    text-decoration: none;
+    line-height: 50px;
+}
+.star-rating {
+    padding: 2px;
+}
+.star-rating-rtl {
+    background: #555;
+    display: inline-block;
+    border: 2px solid #444;
+}
+.star-rating-rtl s {
+    color: yellow;
+}
+.star-rating s:hover:before,
+.star-rating s.rated:before,
+.star-rating s.active:before {
+    content: "\2605";
+}
+.star-rating s:before {
+    content: "\2606";
+}
+.star-rating-rtl s:hover:after,
+.star-rating-rtl s.rated:after,
+.star-rating-rtl s.active:after {
+    content: "\2605";
+}
+
+.star-rating-rtl s:after {
+    content: "\2606";
+}
+
+</style>
 </head>
 <body>
 
@@ -30,6 +102,9 @@
              <div class="icons">
              	<a href="#"><img src="images/icon-setting.png" alt="setting"></a>
              </div>
+             <div class="profile-area">
+                <h4 id="logout" style="cursor: pointer;">Logout</h4>
+            </div>
          </div>
    </div>
 </div>
@@ -174,47 +249,52 @@
                                     <span style="visibility:hidden;" class="active finished">Finished </span>
                                 </div>
                            		<div class="tickarea">
-                                	<img src="images/tick.png" alt="tick">
+                                	<img id="payment_feedback" src="images/tick.png" alt="tick">
                                     <span>Payment & Feedback </span>
                                 </div>
                            </div>
                     </div>
                     <div class="padding newtoppd">
                          <div class="rating-area">
-                             <h6>Overall Rating </h6>
+                             <h6 id="overall_rating" >Overall Rating </h6>
+                           	 <!-- <div class="starwrap">
+                                <div class="star-rating"><s><s><s><s><s></s></s></s></s></s></div> -->
+
+                             	<!-- <a href="#"><img src="images/icon-star.png" alt="star"></a>
+                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
+                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
+                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
+                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
+                                <span>Professionalist </span> -->
+                             <!-- </div> -->
                            	 <div class="starwrap">
+                             	<!-- <a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                <span>Professionalist </span>
+                                <span>Commitment </span> -->
                              </div>
                            	 <div class="starwrap">
+                             	<!-- <a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                <span>Commitment </span>
+                                <span>Customer Care </span> -->
                              </div>
                            	 <div class="starwrap">
+                             	<!-- <a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
                              	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                <span>Customer Care </span>
-                             </div>
-                           	 <div class="starwrap">
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                             	<a href="#"><img src="images/icon-star.png" alt="star"></a>
-                                <span>Delivery </span>
+                                <span>Delivery </span> -->
                              </div>
                          </div>
+                         <div class="overlay">
+                            <div id="loading-img"></div>
+                        </div>
                          <div class="feedback-area">
                              
                              <h6>Share your experience with this Service Provider </h6>
@@ -229,37 +309,83 @@
 </div>
 
 
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="js/common.js" type="text/javascript"></script>
 <script src="../js/custom.js" type="text/javascript"></script>
 <script src="../js/conf.js" type="text/javascript"></script>
+
 
 <script type="text/javascript">
 
 
     $(document).ready(function () {
         
+        var numStars = 0;
+        var service_provider = 0
+          , isFeedbackGiven = 0;
+        // $(function() {
+        //     $("div.star-rating > s").on("click", function(e) {
+        //         $(this).closest('div').find('.active').removeClass('active');
+        //         $(e.target).parentsUntil("div").addClass('active');
+        //         $(e.target).addClass('active');
+        //         numStars = $(e.target).parentsUntil("div").length+1;
+        //     });
+        // });
         $('#feedback').click(function(){
-            
+            //alert(numStars);
             var feedback = $('#feedback_value').val();
             var jobId = $('#jobId').text();
+            var flag = true;
             //alert();
+            if(isFeedbackGiven == 1){
+                flag = false;
+                alert("Feedback and rating has given already...");
+                return;
+            }
             if(feedback == '') {
+                flag = false;
                 $('#feedback_value').css('border-color','red');
             }
-            else{
+            else {
+                $('#feedback_value').css('border-color','');
+            }
+            if(numStars == 0){
+                flag = false;
+                $('#overall_rating').css('color','red');
+            }
+            else {
+                $('#overall_rating').css('color','');
+            }
+
+            //alert(service_provider);
+            if(flag){
+                $(".overlay").show();
                 $("#feedback-area").attr('disabled','disabled');
                 $.ajax({
                     url:API_URL + '/customer-feedback',
                     type:'POST',
-                    data:{feedback_note:feedback, orderid:jobId.substr(1).trim()},
+                    data:{
+                        feedback_note:feedback,
+                        orderid:jobId.substr(1).trim(),
+                        numStars:numStars,
+                        service_provider:service_provider,
+                        userId:localStorage.getItem('userId')
+                    },
                     success:function(res){
                         $("#feedback-area").attr('disabled','');
                         $('#feedback_value').val('');
-                        alert("Feedback submitted succesfully!");
+                        setTimeout(function(){
+                            $(".overlay").hide();
+                            $('#payment_feedback').attr('src', 'images/tick-active.png');
+                            alert("Feedback submitted succesfully!");
+                        },5000);
+                        
                     },
                     error:function(err){
                         $('#feedback_value').val('');
                         $("#feedback-area").attr('disabled','');
+                        $(".overlay").hide();
                         alert(err);
                     }
                 });
@@ -308,7 +434,7 @@
                                 <td class="redtxt">' + orders[row].lm_ord_service_type + '</td>\
                                 <td>'+orders[row].fromlocation+'  to  '+orders[row].tolocation+'</td>\
                                 <td>' + orders[row].lm_ord_id + '</td>\
-                                <td><button data-desc='+orders[row].lm_ord_comments.replace(/ /g, "_")+' data-lm_ord_service_type='+orders[row].lm_ord_service_type.replace(/ /g, "_")+' data-ordinfo='+JSON.stringify(viewObj)+' data-time1='+timeValue[0]+' data-time2='+timeValue[1]+'  class="expand">expand » </button></td>\
+                                <td><button data-service_provider='+orders[row].lm_ord_service_provider+' data-desc='+orders[row].lm_ord_comments.replace(/ /g, "_")+' data-lm_ord_service_type='+orders[row].lm_ord_service_type.replace(/ /g, "_")+' data-ordinfo='+JSON.stringify(viewObj)+' data-time1='+timeValue[0]+' data-time2='+timeValue[1]+'  class="expand">expand » </button></td>\
                                 </tr>';
                                 if (orders[row].lm_ord_status == 'O'){
                                     $('#ongoing_user_data').append(tableData);
@@ -324,6 +450,8 @@
                                  ,  lm_ord_service_type = $(this).data("lm_ord_service_type")
                                  ,  desc = $(this).data("desc")
                                  ,  time2 = $(this).data("time2");
+                                 service_provider = $(this).data("service_provider");
+                                 //alert(service_provider);
                                 console.log("ordData", ordData);    
                                  var dataSplitValues = ordData['date'].split('T')[0].split('-');
                                 $('#jobId').text('#' + ordData['jobId']);
@@ -341,7 +469,16 @@
                                 $('#JobDescription').text(desc.replace(/_/g, " "));
                                 $('#fromLocation').text(ordData['fromLocation']);
                                 $('#toLocation').text(ordData['toLocation']);
+                                $('#overall_rating').append('<div class="starwrap overall_rating_dy">\
+                                <div class="star-rating"><s><s><s><s><s></s></s></s></s></s></div>');
                                 $(".pop").fadeIn('slow');
+                                
+                                $("div.star-rating > s").on("click", function(e) {
+                                $(this).closest('div').find('.active').removeClass('active');
+                                    $(e.target).parentsUntil("div").addClass('active');
+                                    $(e.target).addClass('active');
+                                    numStars = $(e.target).parentsUntil("div").length+1;
+                                });
                                 //$('.job_confirm').css('visibility','visible')
                                 $.ajax({
                                     url:API_URL + '/order-status-tracking/' + ordData['jobId'],
@@ -389,7 +526,23 @@
                                     }    
                                 });
 
+                                $.ajax({
+                                    url:API_URL + '/check-for-feedback/' + ordData['jobId'] + '/' + localStorage.getItem('userId'),
+                                    type:'GET',
+                                    success:function(res){
+                                        console.log("resss", res);
+                                        if (res.result !=undefined && res.result[0].feedback>0){
+                                            isFeedbackGiven = 1;
+                                            $('#payment_feedback').attr('src', 'images/tick-active.png');
+                                        }
+                                        else {
+                                            isFeedbackGiven = 0;
+                                        }
+                                    },
+                                    error:function(err){
 
+                                    }
+                                });
                             });
                             $(".pop i").click(function() {   
                                 $(".pop").fadeOut('fast');
@@ -401,6 +554,10 @@
                                 $('.arrived').css('visibility','hidden');
                                 $('.relocation_progress').css('visibility','hidden');
                                 $('.finished').css('visibility','hidden');
+                                $('#payment_feedback').attr('src', 'images/tick.png');
+                                $('#feedback_value').css('border-color','');
+                                $('#overall_rating').css('color','');
+                                $('.overall_rating_dy').remove();
                             });
                         }
                         else if(res['result']!=undefined && res['result'].length == 0){

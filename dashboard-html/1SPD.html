@@ -14,40 +14,6 @@
 <script>
 window.onload = function () {
 
-var options = {
-	animationEnabled: true,  
-	title:{
-		text: "Number of Bookings - 2018"
-	},
-	axisX: {
-		valueFormatString: "MMM"
-	},
-	axisY: {
-		title: "Number of Bookings",
-		prefix: "",
-		includeZero: false
-	},
-	data: [{
-		yValueFormatString: "",
-		xValueFormatString: "MMMM",
-		type: "spline",
-		dataPoints: [
-			{ x: new Date(2017, 0), y: 25060 },
-			{ x: new Date(2017, 1), y: 27980 },
-			{ x: new Date(2017, 2), y: 33800 },
-			{ x: new Date(2017, 3), y: 49400 },
-			{ x: new Date(2017, 4), y: 40260 },
-			{ x: new Date(2017, 5), y: 33900 },
-			{ x: new Date(2017, 6), y: 48000 },
-			{ x: new Date(2017, 7), y: 31500 },
-			{ x: new Date(2017, 8), y: 32300 },
-			{ x: new Date(2017, 9), y: 42000 },
-			{ x: new Date(2017, 10), y: 52160 },
-			{ x: new Date(2017, 11), y: 49400 }
-		]
-	}]
-};
-$("#chartContainer").CanvasJSChart(options);
 
 }
 </script>
@@ -71,6 +37,9 @@ $("#chartContainer").CanvasJSChart(options);
              <div class="icons">
              	<a href="#"><img src="images/icon-setting.png" alt="setting"></a>
              </div>
+             <div class="profile-area">
+                <h4 id="logout" style="cursor: pointer;">Logout</h4>
+            </div>
          </div>
    </div>
 </div>
@@ -101,12 +70,13 @@ $("#chartContainer").CanvasJSChart(options);
                 <div class="graph-left">
                 	<div class="perbox">
                     	<h2>Current Funds </h2>
-                        <h3>$ 28,050.00 </h3>
+                        <h3>$ 00.00 </h3>
                         <a href="#">Financial Board » </a>
                     </div>
                 	<div class="perbox">
-                    	<h2>Total Daily Bookings </h2>
-                        <h3>78 Bookings </h3>
+                        <h2>Total Daily Bookings </h2>
+                        <img id="total_daily_bookings_preloader" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -15px;" src="../images/preloader.gif" alt="logo">
+                        <h3 id="total_daily_bookings"></h3>
                         <a href="#">Check Calendar » </a>
                     </div>
                 </div>
@@ -122,33 +92,22 @@ $("#chartContainer").CanvasJSChart(options);
                               <span><a href="#">Custom </a></span> 	
                           </div>
                       </div>
-                      <div class="graph"><div id="chartContainer" style="height:178px; max-width:100%; margin:0px auto; overflow:hidden;"></div><!--<img src="images/graph2.jpg" alt="graph2">--></div>	
+                      <!-- <img id="preloader_3" style="margin-left: 20px;height: 218px;width: 245px;margin-top: -15px;" src="../images/preloader.gif" alt="logo"> -->
+                      <div class="graph"><div id="chartContainer" style="height:178px; max-width:100%; margin:0px auto; overflow:hidden;background-image: url('../images/preloader.gif')"></div><!--<img src="images/graph2.jpg" alt="graph2">--></div>	
                 </div>
       		</div>
             
-            <div class="right-box btmmar">
-                    <div class="text-hd-rgt smlmar-two">
-                    	<h4>Job Summary </h4>
-                        <span class="custom-dropdown">
-                                <select>
-                                    <option>Today </option>
-                                    <option>Tomorrow</option>
-                                    <option>Today</option>
-                                </select>
-                        </span>
-                    </div>
-                    <div class="summarybox">
-                        <div class="summarytxt"><span class="grn">75</span>Accepted</div>
-                        <li class='progressbar-75' data-width='75'></li>
-                    </div>
-                    <div class="summarybox">
+            <div class="right-box btmmar" id="progressbar_here">
+                <img id="preloader_2" style="margin-left: 20px;height: 218px;width: 245px;margin-top: -15px;" src="../images/preloader.gif" alt="logo">
+                    
+                    <!-- <div class="summarybox">
                         <div class="summarytxt"><span class="blu">100</span>Awaiting</div>
                         <li class='progressbar-100' data-width='100'></li>
                     </div>
                     <div class="summarybox">
                         <div class="summarytxt"><span class="red">125</span>Declined</div>
                         <li class='progressbar-125' data-width='125'></li>
-                    </div>
+                    </div> -->
          	</div>
             
       	 	<br class="clear" />
@@ -156,19 +115,23 @@ $("#chartContainer").CanvasJSChart(options);
     
       		<div class="left-box btmmar">
                 <div class="dname">
-                	<small>Welcome back, John Doe </small>
+                	<small id="firstname_lastname"> </small>
                     Here's what you've missed
                 </div>
                 <div class="threeboxarea">
                 	<div class="perbox">
-                    	<h2>Jobs Awaiting Confirmation </h2>
-                        <h3>24 Jobs </h3>
-                        <a href="#">Check Calendar » </a>
+                        <h2>Jobs Awaiting Confirmation </h2>
+                        <img id="waiting_job_preloader" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -15px;" src="../images/preloader.gif" alt="logo">
+                        <h3 id="jobs_awaiting_confirmation"></h3>
+                        <!-- <a href="/shikhar/lovemoving-html/dashboard-html/SPD-orders.html">Check Calendar » </a> -->
+                        <a href="https://lovemoving.herokuapp.com/dashboard-html/SPD-orders.html">Check Calendar » </a>
                     </div>
                 	<div class="perbox">
-                    	<h2>Ongoing Jobs Today </h2>
-                        <h3>2 Jobs </h3>
-                        <a href="#">Hurry. Get details » </a>
+                        <h2>Ongoing Jobs Today </h2>
+                        <img id="preloader" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -15px;" src="../images/preloader.gif" alt="logo">
+                        <h3 id='ongoing_jobs_today'></h3>
+                        <!-- <a href="/shikhar/lovemoving-html/dashboard-html/SPD-orders.html">Hurry. Get details » </a> -->
+                        <a href="https://lovemoving.herokuapp.com/dashboard-html/SPD-orders.html">Hurry. Get details » </a>
                     </div>
                 	<div class="perbox">
                     	<h2>Training Manager </h2>
@@ -195,8 +158,9 @@ $("#chartContainer").CanvasJSChart(options);
                     <div class="newsbox">
                     	<div class="imgbox"></div>
                         <div class="txtbox">
-                        	<p><strong>Congratulations !! </strong>You've been chosen to provide services for <span>2 New Jobs</span>. </p>
-                            <a href="#">See details on Calendar » </a>
+                        	<p><strong>Congratulations !! </strong>You've been chosen to provide services for <span id="new_jobs"></span>. </p>
+                            <!-- <a href="/shikhar/lovemoving-html/dashboard-html/SPD-orders.html">See details on Calendar » </a> -->
+                            <a href="https://lovemoving.herokuapp.com/dashboard-html/SPD-orders.html">See details on Calendar » </a>
                         </div>
                     </div>
                 </div>
@@ -246,40 +210,178 @@ $("#chartContainer").CanvasJSChart(options);
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="../js/custom.js" type="text/javascript"></script>
 <script src="../js/conf.js" type="text/javascript"></script>
-
-<script src="js/progressbar.js"></script>
-    <script>
-	$('.progressbar-75').progressBar({
-		shadow : true,
-		percentage : false,
-		animation : true,
-		barColor : "#238c00",
-		height : "10",
-	});
-	$('.progressbar-125').progressBar({
-		shadow : true,
-		percentage : false,
-		animation : true,
-		barColor : "#da344d",
-		height : "10",
-	});
-	$('.progressbar-100').progressBar({
-		shadow : true,
-		percentage : false,
-		animation : true,
-		barColor : "#4f7cac",
-		height : "10",
-	});
-	$('.progressbar-1SPD-training').progressBar({
-		shadow : true,
-		percentage : false,
-		animation : true,
-		barColor : "#da344d",
-		height : "10",
-	});
-</script>
-
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script src="js/progressbar.js"></script>
+    <script>
+
+    $(document).ready(function(){
+        $('#firstname_lastname').text("Welcome back, " + localStorage.getItem('firstname') + " " + localStorage.getItem("lastname"));        
+        
+        $.ajax({
+            url:API_URL + '/total-daily-bookings/'+localStorage.getItem('userId'),
+            type:'GET',
+            success:function(res){
+                $('#total_daily_bookings_preloader').hide();
+                $('#total_daily_bookings').text(res.result[0].total_daily_bookings + ' Bookings');
+            },
+            error:function(err){
+                $('#total_daily_bookings_preloader').hide();
+                alert(err);
+            }
+        });
+
+        $.ajax({
+            url:API_URL + '/service-provider-ongoing-jobs/' + localStorage.getItem('userId'),
+            type:'GET',
+            success:function(res){
+                if (res.result!=undefined){
+                    $('#preloader').hide();
+                    $('#ongoing_jobs_today').text( res.result[0].count + ' Jobs');
+                }
+            },
+            error:function(err){
+                alert(err);
+            }
+        });
+
+        $.ajax({
+            url:API_URL + '/service-provider-confirmation-pending-jobs/' + localStorage.getItem('userId'),
+            type:'GET',
+            success:function(res){
+                if (res.result!=undefined){
+                    $('#waiting_job_preloader').hide();
+                    $('#new_jobs').text( res.result[0].count + ' New Jobs');
+                    $('#jobs_awaiting_confirmation').text( res.result[0].count + ' Jobs');
+                }
+            },
+            error:function(err){
+                alert(err);
+            }
+        });
+
+        $.ajax({
+            url:API_URL + '/service-provider-job-summary-status-wise/' + localStorage.getItem('userId'),
+            type:'GET',
+            success:function(res){
+                $('#preloader_2').hide();
+                if (res.result!=undefined){
+                    var result = res.result;
+                    var obj = {'S':0,'A':0,'D':0,'F':0,'O':0};
+                    for(var i in result){
+                        if (result[i].lm_ord_status == 'S' || result[i].lm_ord_status == 'A' || 
+                         result[i].lm_ord_status == 'O' || result[i].lm_ord_status == 'F'){
+                            obj[result[i].lm_ord_status]  =  obj[result[i].lm_ord_status] +  result[i].count  
+                        };
+                        
+                    }
+                    var accepted = obj['A'] + obj['O'] + obj['F']
+                      , awaiting = obj['S']
+                      , decline = obj['D'];
+                    var pro = '<div class="text-hd-rgt smlmar-two">\
+                    	<h4>Job Summary </h4>\
+                        <span class="custom-dropdown">\
+                                <select>\
+                                    <option>Today </option>\
+                                    <option>Tomorrow</option>\
+                                    <option>Today</option>\
+                                </select>\
+                        </span>\
+                    </div>\
+                    <div class="summarybox">\
+                    <div class="summarytxt"><span class="grn">'+accepted+'</span>Accepted</div>\
+                            <li class="progressbar-'+accepted+'" data-width="'+accepted+'"></li>\
+                            </div>\
+                            <div class="summarybox">\
+                        <div class="summarytxt"><span class="blu">'+awaiting+'</span>Awaiting</div>\
+                        <li class="progressbar-'+awaiting+'" data-width="'+awaiting+'"></li>\
+                    </div>\
+                    <div class="summarybox">\
+                        <div class="summarytxt"><span class="red">'+decline+'</span>Declined</div>\
+                        <li class="progressbar-'+decline+'" data-width="'+decline+'"></li>\
+                    </div>';
+                   $('#progressbar_here').append(pro);
+                    
+                $('.progressbar-' + accepted).progressBar({
+                    shadow : true,
+                    percentage : false,
+                    animation : true,
+                    barColor : "#238c00",
+                    height : "10",
+                });
+                $('.progressbar-'+decline).progressBar({
+                    shadow : true,
+                    percentage : false,
+                    animation : true,
+                    barColor : "#da344d",
+                    height : "10",
+                });
+                $('.progressbar-'+awaiting).progressBar({
+                    shadow : true,
+                    percentage : false,
+                    animation : true,
+                    barColor : "#4f7cac",
+                    height : "10",
+                });
+                $('.progressbar-1SPD-training').progressBar({
+                    shadow : true,
+                    percentage : false,
+                    animation : true,
+                    barColor : "#da344d",
+                    height : "10",
+                });
+                console.log("obj", obj);
+                }
+            },
+            error:function(err){
+                alert(err);
+            }
+        });
+
+
+       $.ajax({
+           url:API_URL + '/number-of-bookings-in-this-year/'+ localStorage.getItem('userId'),
+           type:'GET',
+           success:function(res){
+
+            var options = {
+                animationEnabled: true,  
+                title:{
+                    text: "Number of Bookings - 2018"
+                },
+                axisX: {
+                    valueFormatString: "MMM"
+                },
+                axisY: {
+                    title: "Number of Bookings",
+                    prefix: "",
+                    includeZero: false
+                },
+                data: [{
+                    yValueFormatString: "",
+                    xValueFormatString: "MMMM",
+                    type: "spline",
+                    dataPoints: []
+                }]
+            };
+            var result = res.result
+              , splitDate = '';
+            for(var i in result){
+                options.title.text = "Number of Bookings - " + splitDate[0];
+                splitDate = result[i].months.split('-');
+                options.data[0].dataPoints.push({ x: new Date(splitDate[0], splitDate[1]- 1), y: result[i].order_counts });
+            }
+            $("#chartContainer").CanvasJSChart(options);
+           },
+           error:function(err){
+
+           }
+       });
+
+    });
+	
+</script>
+
+
 </body>
 </html>

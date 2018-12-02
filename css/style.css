@@ -946,7 +946,7 @@ background: linear-gradient(180deg, rgb(238, 238, 238) 63%, rgb(226, 226, 226) 1
 
 .tableboxwrap table {border-collapse:collapse; border-spacing:0; width:100%;}
 
-.tableboxwrap tr {border-bottom:1px solid #dddddd; display:none;}
+.tableboxwrap tr {border-bottom:1px solid #dddddd; display:none1;}
 
 .tableboxwrap tr:last-child {border-bottom:0;}
 

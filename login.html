@@ -79,6 +79,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 <script src="js/conf.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 function isEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -86,6 +87,18 @@ function isEmail(email) {
   return regex.test(email);
 }
     $(document).ready(function () {
+
+      if(localStorage.getItem('userId')){
+        if (localStorage.getItem('is_customer_login') == 2){
+          //window.location.href='http://localhost/shikhar/lovemoving-html/dashboard-html/1SPD.html'; 
+          window.location.href='https://lovemoving.herokuapp.com/dashboard-html/1SPD.html'; 
+        }
+        else{
+          window.location.href='https://lovemoving.herokuapp.com/dashboard-html/2CD.html';
+          //window.location.href='http://localhost/shikhar/lovemoving-html/dashboard-html/2CD.html';
+        }
+        
+      }
         $('#Tab').easyResponsiveTabs({
             type: 'default', //Types: default, vertical, accordion           
             width: 'auto', //auto or any width like 600px
@@ -137,8 +150,16 @@ function isEmail(email) {
                         localStorage.setItem('email', res['result'][0].email);
                         localStorage.setItem('phone', res['result'][0].phone);
                         localStorage.setItem('is_customer_login', res['result'][0].is_customer_login);
-                        //window.location = '/shikhar/lovemoving-html/dash-board.html';
-                        window.location = '/dash-board.html';
+                        if(res['result'][0].is_customer_login == 2){
+                          window.location = 'https://lovemoving.herokuapp.com/dashboard-html/1SPD.html';
+                          //window.location = '/shikhar/lovemoving-html/dashboard-html/1SPD.html';
+                        }
+                        else{
+                          window.location = 'https://lovemoving.herokuapp.com/dashboard-html/1CD.html';
+                          //window.location = '/shikhar/lovemoving-html/dashboard-html/1CD.html';
+                        }
+                        
+                        //window.location = '/dash-board.html';
                     }
                     else {
                         $('.alert-success').remove();

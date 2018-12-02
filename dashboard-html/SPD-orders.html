@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<link rel="stylesheet" type="text/css" href="css/rating.css" />
 <title>Love moving | Dashboard</title>
 </head>
 <body>
@@ -30,6 +31,9 @@
              <div class="icons">
              	<a href="#"><img src="images/icon-setting.png" alt="setting"></a>
              </div>
+             <div class="profile-area">
+                <h4 id="logout" style="cursor: pointer;">Logout</h4>
+            </div>
          </div>
    </div>
 </div>
@@ -82,7 +86,40 @@
     </div>
     
     <div class="footer-wrap"></div>
+     <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
     
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" id="close_model" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Overall Rating </h4>
+        </div>
+        <div class="modal-body">
+          <!-- <h3 id="overall_rating" ></h3> -->
+          
+          <div class="starwrap overall_rating_dy">
+                <label id="overall_rating">Rating:</label>
+            
+          <div class="form-group">
+            <label for="comment" id="feedback_label">Feedback:</label>
+            <textarea class="form-control" rows="5" id="feedback_value"></textarea>
+          </div>
+          <div class="form-group">        
+           
+              <button type="submit" id="feedback" class="btn btn-default btn-xs">Submit</button>
+              <img id="preloader_rating" style="" align="center" src="../images/preloader.gif" width="70" height="70" alt="logo">
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+      
+    </div>
+  </div>
+  
 
 <!-- JavaScript
 ================================================== -->
@@ -96,7 +133,75 @@
 <script type="text/javascript">
 
     isServiceProvider();
+    
     $(document).ready(function () {
+        var numStars = 0;
+        $('#preloader_rating').hide();
+        
+        $('#close_model').click(function(){
+            $('.star-rating').remove();
+            numStars = 0;
+        });
+
+        $('#feedback').click(function(){
+            var feedback = $('#feedback_value').val()
+              , jobId = $(this).data('rating_order_id')
+              , flag = true;
+              jobId = jobId.split('-'); 
+            // if(isFeedbackGiven == 1){
+            //     flag = false;
+            //     alert("Feedback and rating has given already...");
+            //     return;
+            // }
+            if(feedback == '') {
+                flag = false;
+                $('#feedback_value').css('border-color','red');
+                $('#feedback_label').css('color','red');
+            }
+            else {
+                $('#feedback_value').css('border-color','');
+                $('#feedback_label').css('color','');
+            }
+            if(numStars == 0){
+                flag = false;
+                $('#overall_rating').css('color','red');
+            }
+            else {
+                $('#overall_rating').css('color','');
+            }
+            if(flag){
+                $('#preloader_rating').show();
+                $("#feedback").attr('disabled','disabled');
+                $.ajax({
+                    url:API_URL + '/customer-feedback',
+                    type:'POST',
+                    data:{
+                        feedback_note:feedback,
+                        orderid:jobId[0],
+                        numStars:numStars,
+                        service_provider:jobId[1],
+                        userId:localStorage.getItem('userId')
+                    },
+                    success:function(res){
+                        $("#feedback").attr('disabled','');
+                        $('#feedback_value').val('');
+                        setTimeout(function(){
+                            $('#preloader_rating').hide();
+                            alert("Feedback submitted succesfully!");
+                        },5000);
+                        
+                    },
+                    error:function(err){
+                        $('#preloader_rating').hide();
+                        $('#feedback_value').val('');
+                        $("#feedback").attr('disabled','');
+                        alert(err);
+                    }
+                });
+                $('#feedback_value').css('border-color','');   
+            } 
+        });  
+
         $('#username').text('Welcome, ' + localStorage.getItem('firstname'));
 
         $.ajax({
@@ -119,14 +224,14 @@
                                 '08':'Aug',
                                 '09':'Sept',
                                 '10':'Oct',
-                                '11':'Nev',
+                                '11':'Nov',
                                 '12':'Dec'
                             };    
                             var orderStatus = '';
                             for(var row in orders){
                                 var dataSplit = orders[row].lm_ord_date.split('T')[0].split('-');
                                 console.log(orders[row].lm_ord_id);
-                            
+                                orderStatus = '';
                                 switch(orders[row].lm_ord_status){
                                     case 'S':
                                     orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Accept</a>&nbsp;&nbsp;&nbsp;<a class="accept" style="cursor:pointer;">Decline</a></span>';
@@ -138,7 +243,10 @@
                                     orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Delivered?</a>&nbsp;&nbsp;&nbsp;<a class="accept" style="cursor:pointer;">Decline</a></span>';
                                     break;
                                     case 'F':
-                                    orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Moved</a>';
+                                    orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Moved</a> / <button data-lm_ord_user_id="'+orders[row].lm_ord_user_id +'" data-rating_order_id="'+orders[row].lm_ord_id +'" class="btn btn-warning btn-xs rating_to_customer">Rating</button>';
+                                    break;
+                                    case 'D':
+                                    orderStatus = '<span id="'+orders[row].lm_ord_id +'"><a class="accept" style="cursor:pointer;">Declined</a> / <button data-lm_ord_user_id="'+orders[row].lm_ord_user_id +'" data-rating_order_id="'+orders[row].lm_ord_id +'" class="btn btn-warning btn-xs rating_to_customer">Rating</button>';
                                     break;
                                 }
                                 
@@ -151,6 +259,23 @@
                                 </tr>');
                             }
                             
+                            $('.rating_to_customer').click(function(){
+                                var orderid = $(this).data('rating_order_id')
+                                  , ord_user_id = $(this).data('lm_ord_user_id');
+                                
+                                $("#myModal").modal();
+                                $('#overall_rating').append('<div class="star-rating"><s><s><s><s><s></s></s></s></s></s></div>');
+                                $('#feedback').attr('data-rating_order_id',orderid + '-' + ord_user_id);
+                                $("div.star-rating > s").on("click", function(e) {
+            $(this).closest('div').find('.active').removeClass('active');
+            $(e.target).parentsUntil("div").addClass('active');
+            $(e.target).addClass('active');
+            numStars = $(e.target).parentsUntil("div").length+1;
+            console.log(numStars);
+        }); 
+
+                            });
+
                             $('.accept').click(function(e){
                                 var orderId = $(this).closest('span').attr('id');
                                 var status = $(this).text();
@@ -183,6 +308,10 @@
                                             $(".overlay").hide();
                                             if(res['result'] != undefined && res['result']['insertId']!='') {
                                                 alert('Order '+ status +' successfully!');
+                                                setTimeout(function(){
+                                                    //location.reload();
+                                                },2000);
+                                                
                                             }
                                             else {
                                                 alert("something went wrong, please try after sometime!")
