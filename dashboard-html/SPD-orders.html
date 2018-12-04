@@ -185,10 +185,10 @@
                     success:function(res){
                         $("#feedback").attr('disabled','');
                         $('#feedback_value').val('');
-                        setTimeout(function(){
+                        //setTimeout(function(){
                             $('#preloader_rating').hide();
                             alert("Feedback submitted succesfully!");
-                        },5000);
+                        //},5000);
                         
                     },
                     error:function(err){
@@ -308,9 +308,6 @@
                                             $(".overlay").hide();
                                             if(res['result'] != undefined && res['result']['insertId']!='') {
                                                 alert('Order '+ status +' successfully!');
-                                                setTimeout(function(){
-                                                    //location.reload();
-                                                },2000);
                                                 
                                             }
                                             else {

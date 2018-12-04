@@ -221,11 +221,11 @@
             success:function(res){
                 
                if (res.result!=undefined && res.result.length>0){
-                   setTimeout(function(){
+                   //setTimeout(function(){
                     $('#newsfeed_preloader').hide();
                     $('#rating_page').text('Give feedback too »'); 
                    $('#feedback_left').text(res.result[0].lm_ord_service_type);
-                   }, 5000);
+                   //}, 5000);
                }
                else {
                 $('#newsfeed_preloader').hide(); 
@@ -247,12 +247,12 @@
             type:'GET',
             success:function(res){
                if (res.result!=undefined){
-                   setTimeout(function(){
+                   //setTimeout(function(){
                     $('#preloader').hide();
                     $('#preloader__2').hide();
                     $('#new_service_providers').text(res.result[0].service_provider);
                     $('#new_service_providers_2').text(res.result[0].service_provider + ' New Service Providers');
-                   }, 5000);
+                   //}, 5000);
                }
                else {
                 $('#preloader__2').hide();
@@ -271,10 +271,10 @@
             type:'GET',
             success:function(res){
                if (res.result!=undefined){
-                setTimeout(function(){
+                //setTimeout(function(){
                     $('#preloader_today').hide();
                    $('#ongoing_jobs_today').text(res.result[0].todays_ongoing_jobs + ' Jobs');
-                   }, 5000);
+                //   }, 5000);
                }
                else {
                 $('#ongoing_jobs_today').text('0 Jobs');
@@ -290,10 +290,10 @@
             type:'GET',
             success:function(res){
                if (res.result!=undefined){
-                setTimeout(function(){
+                //setTimeout(function(){
                     $('#preloader_notifications').hide();
                    $('#notifications').text(res.result[0].notification_count + ' Alters');
-                   }, 5000);
+                //   }, 5000);
                }
                else {
                 $('#notifications').text('0 Alters');

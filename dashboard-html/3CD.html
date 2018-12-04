@@ -375,11 +375,11 @@
                     success:function(res){
                         $("#feedback-area").attr('disabled','');
                         $('#feedback_value').val('');
-                        setTimeout(function(){
+                        //setTimeout(function(){
                             $(".overlay").hide();
                             $('#payment_feedback').attr('src', 'images/tick-active.png');
                             alert("Feedback submitted succesfully!");
-                        },5000);
+                        //},5000);
                         
                     },
                     error:function(err){
