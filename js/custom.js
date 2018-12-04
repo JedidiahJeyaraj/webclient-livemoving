@@ -32,6 +32,6 @@ function isServiceProvider(){
     if(localStorage.getItem('is_customer_login') != 2){
         alert("Don't have access to partner dashboard!");
         //window.location = '/shikhar/lovemoving-html/login.html';
-        window.location = '/dash-board.html';  
+        window.location = '/dashboard-html/1CD.html';
     }
 }

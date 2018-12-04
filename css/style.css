@@ -665,6 +665,11 @@ background: linear-gradient(180deg, rgb(250, 250, 250) 20%, rgb(253, 253, 253) 5
 
 .left-formwrap input[type="submit"]:hover, .left-formwrap input[type="submit"]:focus {background:#444444;} 
 
+.left-formwrap .formboxfull input[type="password"] {
+    width: 100%;
+    float: none;
+}
+
 .right-side {float:right; width:60%; min-height:500px; position:relative; padding:105px 0 0;}
 
 .text-right {position:relative; float:right; width:485px;}

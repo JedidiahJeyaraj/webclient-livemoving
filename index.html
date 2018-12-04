@@ -149,7 +149,7 @@
                       <div class="formboxfull"><input type="text" name="when_deliver" id="when_datepicker" placeholder="Wednesday, May 9"></div>
                       <div class="formboxwrap">
                           <select name="time" id="time">
-                            <option value="">--Select access time--</option>
+                            <option value="">Select access time</option>
                             <option value="8am - 1pm">8am - 1pm</option>
                             <option value="2pm - 6pm">2pm - 6pm</option>
                           </select>
@@ -635,9 +635,7 @@ function isEmail(email) {
                 }
                 window.location.href = "https://lovemoving.herokuapp.com/service-provider.html?data="+JSON.stringify(data);
                 //window.location.href = "http://localhost/shikhar/lovemoving-html/service-provider.html?data="+JSON.stringify(data);
-            //    window.location.href = "http://localhost/shikhar/lovemoving-html/service-provider.html?\
-            //    room"+room+"&content="+content+"&from_location="+from_location+"&to_location\
-            //    ="+to_location+"&from="+from+"&to="+to+"&time="+time;
+                
             }); 
 
                $.ajax({
@@ -646,12 +644,14 @@ function isEmail(email) {
             success:function(res){
                 console.log(res);
                 res = res.result;
-                var options = '<option value="">---Select options---</option>';
+                var froml = '<option value="">From location</option>';
+                var tol = '<option value="">To location</option>';
                 for(var i in res){
-                    options += '<option value='+res[i].lm_lc_id+'>'+res[i].lm_lc_name+'</option>';
+                    froml += '<option value='+res[i].lm_lc_id+'>'+res[i].lm_lc_name+'</option>';
+                    tol += '<option value='+res[i].lm_lc_id+'>'+res[i].lm_lc_name+'</option>';
                 }
-                $('#fromLocation').append(options);
-                $('#toLocation').append(options);
+                $('#fromLocation').append(froml);
+                $('#toLocation').append(tol);
             },
             error:function(err){
                 alert(err);               

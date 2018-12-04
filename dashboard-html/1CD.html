@@ -20,7 +20,7 @@
   	  	 <!-- <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/index.html"><img src="images/logo.png" alt="logo"></a></h1>	 -->
          <div class="topbar-rgt">
          	 <div class="profile-area">
-         		<a href="#"><span id="email">Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
+         		<a href="#"><span id="email"></span><img src="images/pic-1.jpg" alt="pic-1"></a>
              </div>
              <div class="icons">
              	<a href="0chat.html"><img src="images/icon-chat.png" alt="chat"></a>
@@ -90,24 +90,31 @@
                     <div class="newsbox">
                     	<div class="imgbox"><img src="images/pic-1.jpg" alt="pic-1"></div>
                         <div class="txtbox">
-                        	<p><strong>John Doe</strong> left feedback for <span>Full Relocation</span> on your profile. </p>
-                            <a href="#">Give feedback too » </a>
+                        	<p><strong id="firstname_lastname"></strong> left feedback for <span id="feedback_left"></span> on your profile. </p>
+                            <!-- <a href="http://localhost/shikhar/lovemoving-html/dashboard-html/3CD.html" id="rating_page" ></a> -->
+                            <a href="https://lovemoving.herokuapp.com/dashboard-html/3CD.html" id="rating_page" ></a>
+                            <img id="newsfeed_preloader" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -10px;" src="../images/preloader.gif" alt="logo">
                         </div>
                     </div>
                     <div class="newsbox">
                     	<div class="imgbox"></div>
                         <div class="txtbox">
-                        	<p><strong class="bk">Love</strong><strong>Moving</strong> added <span>142 New Service Providers</span> for your business. </p>
+                                
+                            <p><strong class="bk">Love</strong><strong>Moving</strong> added <span id="new_service_providers_2"></span> for your business. </p>
+                            <img id="preloader__2" style="margin-left: 20px;height: 51px;width: 67px;margin-top: -10px;" src="../images/preloader.gif" alt="logo">
                             <a href="#">See what they offer » </a>
                         </div>
                     </div>
-                    <div class="newsbox">
-                    	<div class="imgbox"></div>
-                        <div class="txtbox">
-                        	<p><strong>Congratulations !!</strong> Your job <span>Packing & Storage</span> has been accepted. </p>
-                            <a href="#">Find out more on Booking Manager » </a>
-                        </div>
+                    <div id="order_status">
+                        <img id="newsfeed_preloader__2" style="margin-left: 72px;height: 51px;width: 67px;margin-top: -10px;" src="../images/preloader.gif" alt="logo">
                     </div>
+                    <!-- <div class="newsbox"> -->
+                        
+                        <!-- <div class="txtbox">
+                                <p><strong>Congratulations !!</strong> Your job <span>Packing & Storage</span> has been accepted. </p>
+                                <a href="#">Find out more on Booking Manager » </a>
+                        </div> -->
+                    <!-- </div> -->
                 </div>
       		</div>
       		<div class="right-box">
@@ -153,16 +160,88 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="../js/custom.js" type="text/javascript"></script>
 <script src="../js/conf.js" type="text/javascript"></script>
+<script src="js/common.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 
 
     $(document).ready(function () {
-        $('#email').text(localStorage.getItem('email'));
-        $('#username').html('<h2>' + localStorage.getItem('firstname') + '  ' + localStorage.getItem('lastname') + '</h2>');
-        $('#username').text('Welcome back, ' + localStorage.getItem('firstname') + '  ' +  localStorage.getItem('lastname'));
-        //new_service_providers
-        //ongoing_jobs_today
+        
+        var fullName = jsUcfirst(localStorage.getItem('firstname'))  + '  ' + jsUcfirst(localStorage.getItem('lastname'));
+        $('#email').text('Welcome, ' + fullName);
+        $('#username').html('<h2>' + fullName + '</h2>');
+        $('#username').text('Welcome back, ' + fullName);
+        $('#firstname_lastname').text(fullName);
+        //$('#rating_page').hide();
+        
+        $.ajax({
+            url:API_URL + '/my-orders-notifications/' + localStorage.getItem('userId'),
+            type:'GET',
+            success:function(res){
+                var result = res.result;
+                $('#newsfeed_preloader__2').hide();
+                if (result!=undefined && result.length>0){
+
+                    
+                    var status = '';
+                    for(var i in result){
+                        switch(result[i].lm_ord_status){
+                            case 'A':
+                            status='Approved';
+                            break;
+                            case 'D':
+                            status='Declined';
+                            break;
+                            case 'O':
+                            status='On-going';
+                            break;
+                            case 'F':
+                            status='Moved';
+                            break;
+                        }
+                        
+                        $('#order_status').append('<div class="newsbox"><div class="imgbox"></div><div class="txtbox">\
+                                <p><strong>'+(status=='Declined'?'Woof':'Congratulations')+' !!</strong> Your job <span>Packing & Storage</span> has been '+status+'. </p>\
+                                <a href="#">Find out more on Booking Manager » </a>\
+                        </div></div>');
+                    }
+                }
+                else {
+                    $('#newsfeed_preloader__2').hide();
+                   // $('#order_status').append('<p><strong>Congratulations !!</strong> Your job <span>Packing & Storage</span> has been accepted. </p>');
+                }
+            },
+            error:function(err){
+
+            }
+        })
+        $.ajax({
+            url:API_URL + '/newsfeed-is-review-left/'+localStorage.getItem('userId'),
+            type:'GET',
+            success:function(res){
+                
+               if (res.result!=undefined && res.result.length>0){
+                   setTimeout(function(){
+                    $('#newsfeed_preloader').hide();
+                    $('#rating_page').text('Give feedback too »'); 
+                   $('#feedback_left').text(res.result[0].lm_ord_service_type);
+                   }, 5000);
+               }
+               else {
+                $('#newsfeed_preloader').hide(); 
+                $('#rating_page').text('Give feedback too »');
+                $('#feedback_left').text('NA');
+               }
+               
+               
+            },
+            error:function(error){
+                $('#newsfeed_preloader').hide();
+                $('#rating_page').text('Give feedback too »');
+                alert(error);
+            }
+        });
+
         $.ajax({
             url:API_URL + '/new-service-providers',
             type:'GET',
@@ -170,14 +249,19 @@
                if (res.result!=undefined){
                    setTimeout(function(){
                     $('#preloader').hide();
-                   $('#new_service_providers').text(res.result[0].service_provider);
+                    $('#preloader__2').hide();
+                    $('#new_service_providers').text(res.result[0].service_provider);
+                    $('#new_service_providers_2').text(res.result[0].service_provider + ' New Service Providers');
                    }, 5000);
                }
                else {
+                $('#preloader__2').hide();
                 $('#new_service_providers').text(0);
                } 
             },
             error:function(error){
+                $('#preloader').hide();
+                $('#preloader__2').hide();
                 alert(error);
             }
         });
