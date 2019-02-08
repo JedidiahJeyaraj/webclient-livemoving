@@ -18,7 +18,8 @@
 
 <div class="whitehdr">
   <div class="wrap tbpadding">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+             <!-- <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
+             <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	
          <div class="topbar-rgt">
          	 <div class="profile-area">
          		<a href="#"><span id="email">Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
@@ -63,7 +64,7 @@
     	<div class="gybox">
        		<div class="profile-left-box">
                         <div class="profile-pic-wrap">
-                            <div class="profile-pic"><img src="images/profile.jpg" alt="profile" /></div>
+                            <div class="profile-pic"><img src="images/avatar.jpeg" id="avatar" alt="profile" /></div>
                             <div class="rating-area">
                                  <h6>Customer Rating </h6>
                                  <div class="starwrap" id="overall_rating1">
@@ -141,13 +142,19 @@
 
 
     $(document).ready(function () {
-
+        
+        var avatar = localStorage.getItem('avatar');
+        if(avatar != undefined && avatar.indexOf('uploads/')>=0){
+            avatar  = avatar.split("uploads/")[1];
+            alert(avatar);
+            $('#avatar').attr('src', API_URL + '/' + avatar);
+        }
+    
         $.ajax({
             url:API_URL + '/service-provider-rating/' + localStorage.getItem('userId'),
             type:'GET',
             success:function(res){
-                //console.log();
-                //alert(res.result[0].sum_of_rating/res.result[0].n_rating);
+               
                 if (res.result[0].sum_of_rating != null && res.result[0].n_rating !=null){
                     var val = (res.result[0].sum_of_rating / res.result[0].n_rating).toFixed(1);
                     addScore(Math.round(val) * 20, $("#fixture"));
