@@ -146,7 +146,6 @@
         var avatar = localStorage.getItem('avatar');
         if(avatar != undefined && avatar.indexOf('uploads/')>=0){
             avatar  = avatar.split("uploads/")[1];
-            alert(avatar);
             $('#avatar').attr('src', API_URL + '/' + avatar);
         }
     

@@ -22,7 +22,8 @@
 <div class="header">
   <div class="bigwrap">
       <div class="topbar">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+             <!-- <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
+             <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	
          <div class="menuwrap">
             <label for="show-menu" class="show-menu">Show Menu</label>
 			<input type="checkbox" id="show-menu" role="button">
@@ -130,6 +131,14 @@
                           <option>Light </option>
                           <option>Medium </option>
                           <option>Full </option>
+                      </select>
+
+                      <select name="states" id="states">
+                        
+                      </select>
+
+                      <select name="cities" id="cities">
+                        
                       </select>
 
                       <div class="formboxwrap">
@@ -633,12 +642,79 @@ function isEmail(email) {
                     }
 
                 }
-                window.location.href = "https://lovemoving.herokuapp.com/service-provider.html?data="+JSON.stringify(data);
-                //window.location.href = "http://localhost/shikhar/lovemoving-html/service-provider.html?data="+JSON.stringify(data);
+                //window.location.href = "https://lovemoving.herokuapp.com/service-provider.html?data="+JSON.stringify(data);
+                window.location.href = "http://localhost/shikhar/lovemoving-html/service-provider.html?data="+JSON.stringify(data);
                 
             }); 
 
-               $.ajax({
+
+        $.ajax({
+            "url": API_URL + "/all-states",
+            "type": "GET",
+            success:function(res){
+                console.log(res);
+                res = res.result;
+                var froml = '<option value="">Please select state!</option>';
+        
+                for(var i in res){
+                    froml += '<option value='+res[i].id+'>'+res[i].state_name+'</option>';
+                }
+                $('#states').append(froml);
+            },
+            error:function(err){
+                alert(err);               
+            }    
+        });
+
+            $('#states').change(function(){
+
+                var stateId = $("#states option:selected").val();
+                
+                $.ajax({
+                    "url": API_URL + "/cities/"+stateId,
+                    "type": "GET",
+                    success:function(res){
+                        console.log(res);
+                        res = res.result;
+                        var froml = '<option value="">Please select city!</option>';
+                        for(var i in res){
+                            froml += '<option value='+res[i].id+'>'+res[i].lm_city_name+'</option>';
+                        }
+                        $('#cities').empty();
+                        $('#cities').append(froml);
+                    },
+                    error:function(err){
+                        console.log("err", err);
+                    }    
+                });
+
+            });
+
+            $('#cities').change(function(){
+
+                var cityID = $("#cities option:selected").val();
+                $.ajax({
+                    "url": API_URL + "/suburb/"+cityID,
+                    "type": "GET",
+                    success:function(res){
+                        console.log(res);
+                        res = res.result;
+                        var froml = '<option value="">From location</option>';
+                        var tol = '<option value="">To location</option>';
+                        for(var i in res){
+                            froml += '<option value='+res[i].lm_lc_id+'>'+res[i].lm_lc_name+'</option>';
+                            tol += '<option value='+res[i].lm_lc_id+'>'+res[i].lm_lc_name+'</option>';
+                        }
+                        $('#fromLocation').append(froml);
+                        $('#toLocation').append(tol);
+                    },
+                    error:function(err){
+                        console.log("err", err);
+                    }    
+                });
+
+            });
+           /* $.ajax({
             "url": API_URL + "/list-location",
             "type": "GET",
             success:function(res){
@@ -656,7 +732,7 @@ function isEmail(email) {
             error:function(err){
                 alert(err);               
             }    
-        });
+        });*/
 
               $('.fadeOut').owlCarousel({
                 items: 1,
@@ -744,7 +820,7 @@ $(function() {
             $("#amount").css('border-color','');   
         }
 
-        if($("#fromLocation option:selected").val() == ''){
+        if($("#fromLocation option:selected").val() == '' || $("#fromLocation option:selected").val() == undefined){
             $("#fromLocation").css('border-color','red');
             flag = false;     
         }
@@ -752,7 +828,23 @@ $(function() {
             $("#fromLocation").css('border-color','');   
         }
 
-        if($("#toLocation option:selected").val() == ''){
+        if($("#states option:selected").val() == '' || $("#states option:selected").val() == undefined){
+            $("#states").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#states").css('border-color','');   
+        }
+        
+        if($("#cities option:selected").val() == '' || $("#cities option:selected").val() == undefined){
+            $("#cities").css('border-color','red');
+            flag = false;     
+        }
+        else {
+            $("#cities").css('border-color','');   
+        }
+
+        if($("#toLocation option:selected").val() == '' || $("#toLocation option:selected").val() == undefined){
             $("#toLocation").css('border-color','red');
             flag = false;     
         }
