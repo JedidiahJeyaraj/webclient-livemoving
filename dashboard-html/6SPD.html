@@ -285,7 +285,10 @@
                 processData: false,
                 beforeSend: function () {},
                 success: function (data) {
-
+                    console.log("data", data);
+                    if(data.hasOwnProperty('avatarPath')){
+                        localStorage.setItem('avatar', data['avatarPath']);
+                    }
                 },
                 error: function (e) {
 
