@@ -16,14 +16,18 @@ function jsUcfirst(string) {
 
         $("#upload_image").change(function (e) {
             e.preventDefault();
-            var file = $('input[type=file]')[0].files[0];
-            if (!(file && file[0] && file[0].name.match(/\.(jpg|jpeg|png)$/)) ) {
-                alert("Invalid file, only jpg,jpeg,png are allowed!");
-                return;
-            }  
 
+            var ext = $('#upload_image').val().split('.').pop().toLowerCase();
+            if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+                alert('invalid extension!');
+                return;
+            }
+
+            if(!confirm("Ready to upload profile pic(Y/N)")){
+                return;
+            }
             var formData = new FormData();
-                formData.append('avatar', file);
+                formData.append('avatar', $('input[type=file]')[0].files[0]);
             $.ajax({
                 url: API_URL + "/upload-avatar/" + localStorage.getItem("userId"),
                 type: "POST",
@@ -33,7 +37,10 @@ function jsUcfirst(string) {
                 processData: false,
                 beforeSend: function () {},
                 success: function (data) {
-
+                    console.log("data", data);
+                    if(data.hasOwnProperty('avatarPath')){
+                        localStorage.setItem('avatar', data['avatarPath']);
+                    }
                 },
                 error: function (e) {
 
