@@ -19,7 +19,8 @@
     
 <div class="whitehdr">
   <div class="wrap tbpadding">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com"><img src="images/logo.png" alt="logo"></a></h1>	
+             <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com"><img src="images/logo.png" alt="logo"></a></h1>	
+             <!-- <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
          <div class="topbar-rgt">
          	 <div class="profile-area">
          		<a href="#"><span id="firstname">Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
@@ -65,7 +66,7 @@
     	<div class="gybox">
        		<div class="profile-left-box">
                         <div class="profile-pic-wrap">
-                            <div class="profile-pic"><img src="images/profile-img.jpg" alt="profile-img" /></div>
+                            <div class="profile-pic"><img src="images/avatar.jpeg" id="avatar" alt="profile-img" /></div>
                             <div class="rating-area">
                                  <h6>Availability Calendar </h6>
                                  <img src="images/calendar-2.png" alt="calendar">
@@ -192,6 +193,12 @@ Full Relocation Services, 24/7 Support </p>
 
 $(document).ready(function(){
 
+
+    var avatar = localStorage.getItem('avatar');
+    if(avatar != undefined && avatar.indexOf('uploads/')>=0){
+        avatar  = avatar.split("uploads/")[1];
+        $('#avatar').attr('src', API_URL + '/' + avatar);
+    }
 
     $(".overlay").show();
     $('#first_and_last_name').text(jsUcfirst(localStorage.getItem('firstname')) + ' ' + jsUcfirst(localStorage.getItem('lastname')));
