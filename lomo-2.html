@@ -21,9 +21,10 @@
 
 <div class="whitebar">
   <div class="bigwrap">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com"><img src="images/logo.png" alt="logo"></a></h1>	
-         <!-- <div class="topbar-rgt"><span>Already a member ?</span><div class="red-btn nomargin"><a href="/shikhar/lovemoving-html/login.html">Log in here </a></div></div> -->
-         <div class="topbar-rgt"><span>Already a member ?</span><div class="red-btn nomargin"><a href="/login.html">Log in here </a></div></div>
+         <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com"><img src="images/logo.png" alt="logo"></a></h1>	
+         <!-- <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
+         <div class="topbar-rgt"><span>Already a member ?</span><div class="red-btn nomargin"><a href="/shikhar/lovemoving-html/login.html">Log in here </a></div></div>
+         <!-- <div class="topbar-rgt"><span>Already a member ?</span><div class="red-btn nomargin"><a href="/login.html">Log in here </a></div></div> -->
          <br class="clear" />
    </div>
 </div>
@@ -86,6 +87,18 @@ function isEmail(email) {
   return regex.test(email);
 }
     $(document).ready(function () {
+
+      if(localStorage.getItem('userId')){
+        if (localStorage.getItem('is_customer_login') == 2){
+          //window.location.href='http://localhost/shikhar/lovemoving-html/dashboard-html/1SPD.html'; 
+          window.location.href='https://lovemoving.herokuapp.com/dashboard-html/1SPD.html'; 
+        }
+        else{
+          window.location.href='https://lovemoving.herokuapp.com/dashboard-html/2CD.html';
+          //window.location.href='http://localhost/shikhar/lovemoving-html/dashboard-html/2CD.html';
+        }
+        
+      }
         $('#Tab').easyResponsiveTabs({
             type: 'default', //Types: default, vertical, accordion           
             width: 'auto', //auto or any width like 600px

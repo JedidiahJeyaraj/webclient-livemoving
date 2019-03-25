@@ -104,7 +104,19 @@ input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-place
 	margin-right:8px;
 	padding:0 0;
 }
-
+.setting-formbox textarea {
+width: 100%;
+    color: #666666;
+    font-size: 14px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 14px;
+    margin: 0 0;
+    font-weight: 300;
+    font-style: italic;
+    border: 1px solid #dddddd;
+	border-radius: 5px;
+}	
 /*Style for menu links*/
 .navwrap li a {
 	display:block;

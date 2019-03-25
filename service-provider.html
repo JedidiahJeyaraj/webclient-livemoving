@@ -23,7 +23,8 @@
 
 <div class="whitebar">
   <div class="bigwrap">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+             <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+             <!-- <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
          <div class="menuwrap">
             <label for="show-menu" class="show-menu">Show Menu</label>
 			<input type="checkbox" id="show-menu" role="button">
@@ -255,6 +256,7 @@
 <script src="js/owl.carousel.js"></script>
 <script>
     $(document).ready(function () {
+
         var currentLocation = window.location;
         var url = new URL(currentLocation);
         var form_data = url.searchParams.get("data");

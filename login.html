@@ -21,7 +21,8 @@
 
 <div class="whitebar">
   <div class="bigwrap">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+         <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+         <!-- <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
          <div class="topbar-rgt"><span>Already a member ?</span><div class="red-btn nomargin"><a href="#">Log in here </a></div></div>
          <br class="clear" />
    </div>
@@ -150,6 +151,7 @@ function isEmail(email) {
                         localStorage.setItem('email', res['result'][0].email);
                         localStorage.setItem('phone', res['result'][0].phone);
                         localStorage.setItem('is_customer_login', res['result'][0].is_customer_login);
+                        localStorage.setItem('avatar', res['result'][0].avatar);
                         if(res['result'][0].is_customer_login == 2){
                           window.location = 'https://lovemoving.herokuapp.com/dashboard-html/1SPD.html';
                           //window.location = '/shikhar/lovemoving-html/dashboard-html/1SPD.html';

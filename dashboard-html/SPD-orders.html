@@ -17,7 +17,8 @@
 
 <div class="whitehdr">
   <div class="wrap tbpadding">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+             <!-- <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
+             <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	
          <div class="topbar-rgt">
          	 <div class="profile-area">
          		<a href="#"><span id="firstname">Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
@@ -252,7 +253,7 @@
                                 
                                 $('#user_data').append('<tr>\
                                 <td>' +  months[dataSplit[1]] + ' ' +dataSplit[1]+ ', ' +dataSplit[0]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ orders[row].lm_ord_access_time +'</td>\
-                                <td class="redtxt">' + orders[row].lm_ord_service_type + '</td>\
+                                <td class="redtxt"><a href="/shikhar/lovemoving-html/dashboard-html/orderView.html?ordId='+orders[row].lm_ord_id+'">' + orders[row].lm_ord_service_type + '</a></td>\
                                 <td>'+orders[row].fromlocation+'  to  '+orders[row].tolocation+'</td>\
                                 <td>' + orders[row].lm_ord_id + '</td>\
                                 <td>'+orderStatus+'</td>\
@@ -308,7 +309,7 @@
                                             $(".overlay").hide();
                                             if(res['result'] != undefined && res['result']['insertId']!='') {
                                                 alert('Order '+ status +' successfully!');
-                                                
+                                                location.reload(); 
                                             }
                                             else {
                                                 alert("something went wrong, please try after sometime!")

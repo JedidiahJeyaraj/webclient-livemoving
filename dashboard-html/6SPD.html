@@ -115,9 +115,15 @@
                      <div class="setting-formwrap">
                         <div class="setting-formbox fullwidth">
                             <span>My Desc </span>
-                            <input type="text" name="mydesc" id="mydesc" value="" placeholder="Lorem ipsum" />
+                            <!-- <input type="text" name="mydesc" id="mydesc" value="" placeholder="Lorem ipsum" /> -->
+                            <textarea rows="20" cols="50" name="mydesc" id="mydesc" class="textarea"></textarea>
                         </div>
+                        
+                        
                     </div>
+                    
+                           
+                        </textarea>
                      <div class="setting-formwrap">
                             
                             <div class="form-box">
@@ -267,7 +273,7 @@
            
             var ext = $('#upload_image').val().split('.').pop().toLowerCase();
             if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
-                alert('invalid extension!');
+                alert('Invalid extension!');
                 return;
             }
 
@@ -277,7 +283,7 @@
             var formData = new FormData();
                 formData.append('avatar', $('input[type=file]')[0].files[0]);
             $.ajax({
-                url: API_URL + "/upload-avatar/" + localStorage.getItem("userId"),
+                url: API_URL + "/upload-avatar/" + localStorage.getItem("userId") + "?avatarPath="+localStorage.getItem("avatar"),
                 type: "POST",
                 data: formData,
                 contentType: false,
@@ -289,6 +295,8 @@
                     if(data.hasOwnProperty('avatarPath')){
                         localStorage.setItem('avatar', data['avatarPath']);
                     }
+                   //window.location = '/shikhar/lovemoving-html/dashboard-html/2SPD.html';
+                   window.location = '/dashboard-html/2SPD.html';
                 },
                 error: function (e) {
 
@@ -323,7 +331,7 @@
             },
             error:function(err){
                 $(".overlay").hide();
-                alert(err);
+                //alert(err);
             }
         });
 
@@ -446,7 +454,7 @@
                     },
                     error:function(err){
                         $(".overlay").hide();
-                        alert(err);
+                       // alert(err);
                     }
                 })
             }

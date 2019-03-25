@@ -14,6 +14,7 @@ function jsUcfirst(string) {
 
     $(document).ready(function (e) {
 
+
         $("#upload_image").change(function (e) {
             e.preventDefault();
 
@@ -29,7 +30,7 @@ function jsUcfirst(string) {
             var formData = new FormData();
                 formData.append('avatar', $('input[type=file]')[0].files[0]);
             $.ajax({
-                url: API_URL + "/upload-avatar/" + localStorage.getItem("userId"),
+                url: API_URL + "/upload-avatar/" + localStorage.getItem("userId") + "?avatarPath="+localStorage.getItem("avatar"),
                 type: "POST",
                 data: formData,
                 contentType: false,
@@ -40,6 +41,15 @@ function jsUcfirst(string) {
                     console.log("data", data);
                     if(data.hasOwnProperty('avatarPath')){
                         localStorage.setItem('avatar', data['avatarPath']);
+                    }
+                    
+                    if(localStorage.getItem('is_customer_login') == 2){
+                        window.location = '/dashboard-html/1CD.html';
+                        //window.location = "/shikhar/lovemoving-html/dashboard-html/6SPD.html";      
+                    }
+                    else {
+                        window.location = '/dashboard-html/2CD.html';
+                        //window.location = '/shikhar/lovemoving-html/dashboard-html/2CD.html';
                     }
                 },
                 error: function (e) {

@@ -88,7 +88,8 @@
 
 <div class="whitehdr">
   <div class="wrap tbpadding">
-  	  	 <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com"><img src="images/logo.png" alt="logo"></a></h1>	
+             <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com"><img src="images/logo.png" alt="logo"></a></h1>	
+             <!-- <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
          <div class="topbar-rgt">
          	 <div class="profile-area">
          		<a href="#"><span id="username"></span><img src="images/pic-1.jpg" alt="pic-1"></a>
@@ -337,6 +338,7 @@
             var feedback = $('#feedback_value').val();
             var jobId = $('#jobId').text();
             var flag = true;
+            var orderInfo = "";
             //alert();
             if(isFeedbackGiven == 1){
                 flag = false;
@@ -428,6 +430,7 @@
                                 viewObj.fromLocation = orders[row].fromlocation;
                                 viewObj.toLocation = orders[row].tolocation;
                                 //viewObj.desc = orders[row].lm_ord_comments;
+                                orderInfo = viewObj;
                                 var timeValue = orders[row].lm_ord_access_time.split('-');
                                 var tableData = '<tr>\
                                 <td>' +  months[dataSplit[1]] + ' ' +dataSplit[1]+ ', ' +dataSplit[0]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ orders[row].lm_ord_access_time +'</td>\
@@ -445,14 +448,14 @@
                             }
 
                             $(".expand").click(function() {  
-                                var ordData = $(this).data("ordinfo")
+                                var ordData = ""
                                  ,  time1 = $(this).data("time1")
                                  ,  lm_ord_service_type = $(this).data("lm_ord_service_type")
                                  ,  desc = $(this).data("desc")
                                  ,  time2 = $(this).data("time2");
                                  service_provider = $(this).data("service_provider");
-                                 //alert(service_provider);
-                                console.log("ordData", ordData);    
+                                 ordData = orderInfo;
+                                console.log("ordData", ordData['date']);    
                                  var dataSplitValues = ordData['date'].split('T')[0].split('-');
                                 $('#jobId').text('#' + ordData['jobId']);
                                 

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+<link rel="stylesheet" type="text/css" href="css/rating.css" />
+<title>Love moving | Dashboard</title>
+</head>
+<body>
+
+
+<div class="whitehdr">
+  <div class="wrap tbpadding">
+             <h1 class="logowrap"><a href="https://lovemoving.herokuapp.com/"><img src="images/logo.png" alt="logo"></a></h1>	
+             <!-- <h1 class="logowrap"><a href="http://localhost/shikhar/lovemoving-html/"><img src="images/logo.png" alt="logo"></a></h1>	 -->
+         <div class="topbar-rgt">
+         	 <div class="profile-area">
+         		<a href="#"><span id="firstname">Welcome, Gabriel </span><img src="images/pic-1.jpg" alt="pic-1"></a>
+             </div>
+             <div class="icons">
+             	<a href="0chat.html"><img src="images/icon-chat.png" alt="chat"></a>
+             </div>
+             <div class="icons">
+             	<a href="#"><img src="images/icon-bell.png" alt="bell"></a>
+             </div>
+             <div class="icons">
+             	<a href="#"><img src="images/icon-setting.png" alt="setting"></a>
+             </div>
+             <div class="profile-area">
+                <h4 id="logout" style="cursor: pointer;">Logout</h4>
+            </div>
+         </div>
+   </div>
+</div>
+
+
+
+<div class="navwrap">
+		<div class="wrap">
+            <label for="show-menu" class="show-menu">Show Menu</label>
+			<input type="checkbox" id="show-menu" role="button">
+         	<ul id="menu">
+                <li><a href="1SPD.html">Overview </a></li>
+                <li><a href="2SPD.html">Profile </a></li>
+                <li><a href="SPD-orders.html">Orders </a></li>
+                <li><a href="3SPD.html">Financial </a></li>
+                <li><a href="4SPD.html">Training </a></li>
+                <li><a href="5SPD.html">Calendar </a></li>
+                <li><a href="6SPD.html">Settings </a></li>
+            </ul>
+         </div>
+</div>
+
+<div class="overlay">
+        <div id="loading-img"></div>
+    </div>
+    
+    <div class="content-area">
+        <div class="wrap content-wrap">
+               
+               <div class="whbox">
+                        <div class="text-hd">
+                            <h2><strong>Order View </strong></h2>
+                            <div id="orderView"></div>
+                        </div>
+                       
+                        <div class="table-sc-wrap"> 
+                            <!-- <div class="table-wrap three-cd-table"> -->
+                                
+                                <img id="preloader" style="margin-left: 393px;" src="../images/preloader.gif" alt="logo">
+                            <!-- </div> -->
+                        </div>
+               </div>
+        </div>
+    </div>
+    
+    <div class="footer-wrap"></div>
+    
+  
+
+<!-- JavaScript
+================================================== -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../js/custom.js" type="text/javascript"></script>
+<script src="../js/conf.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+    isServiceProvider();
+    
+    $(document).ready(function () {
+           
+        var currentLocation = window.location;
+        var url = new URL(currentLocation);
+        var id = url.searchParams.get("ordId");
+        $.ajax({
+            url:API_URL + '/order/' + id,
+            type:'GET',
+            success:function(res){
+                console.log(res.result);
+                if(res.result.length==0) {
+                    $('#orderView').text("No order info available!");  
+                }else {
+                    var template = "<h2>OrderId:"+res.result[0].lm_ord_id+"</h2>\
+                    <h2>Service Type:"+res.result[0].lm_ord_service_type+"</h2>\
+                    <h2>Order Status:"+res.result[0].lm_ord_status+"</h2>\
+                    <h2>From Date:"+res.result[0].lm_ord_from.split('T')[0]+"</h2>\
+                    <h2>To Date:"+res.result[0].lm_ord_to.split('T')[0]+"</h2>\
+                    <h2>From Location:"+res.result[0].fromlocation+"</h2>\
+                    <h2>To Location:"+res.result[0].tolocation+"</h2>\
+                    <h2>Comments:"+res.result[0].lm_ord_comments+"</h2>";
+                    $('#orderView').html(template);
+                }
+                $('#preloader').hide();
+            },
+            error:function(err){
+                $('#preloader').hide();
+
+            }
+        });
+        
+    });    
+
+</script>
+
+
+
+</body>
+</html>

@@ -216,6 +216,13 @@ window.onload = function () {
     <script>
 
     $(document).ready(function(){
+
+        var avatar = localStorage.getItem('avatar');
+        if(avatar != undefined && avatar.indexOf('uploads/')>=0){
+            avatar  = avatar.split("uploads/")[1];
+            $('#avatar').attr('src', API_URL + '/' + avatar);
+        }
+        
         $('#firstname_lastname').text("Welcome back, " + localStorage.getItem('firstname') + " " + localStorage.getItem("lastname"));        
         
         $.ajax({
